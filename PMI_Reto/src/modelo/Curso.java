@@ -1,4 +1,4 @@
-package Clases;
+package modelo;
 
 import java.sql.Date;
 
@@ -7,15 +7,17 @@ public class Curso {
 	// Atributos
 	private int idCurso;
 	private String idioma;
-	private Date horario;
+	private String dia;
+	private String horario;
 	private int dificultad;
 	private String programa;
 		
 	// Constructor
-	public Curso(int idCurso, String idioma, Date horario, int dificultad, String programa) {
+	public Curso(int idCurso, String idioma, String dia, String horario, int dificultad, String programa) {
 		super();
 		this.idCurso = idCurso;
 		this.idioma = idioma;
+		this.dia = dia;
 		this.horario = horario;
 		this.dificultad = dificultad;
 		this.programa = programa;
@@ -37,12 +39,19 @@ public class Curso {
 	public void setIdioma(String idioma) {
 		this.idioma = idioma;
 	}
+	public String getDia() {
+		return dia;
+	}
 
-	public Date getHorario() {
+	public void setDia(String dia) {
+		this.dia = dia;
+	}
+
+	public String getHorario() {
 		return horario;
 	}
 
-	public void setHorario(Date horario) {
+	public void setHorario(String horario) {
 		this.horario = horario;
 	}
 
@@ -62,10 +71,11 @@ public class Curso {
 		this.programa = programa;
 	}
 
-	// toString
 	@Override
 	public String toString() {
-		return "Curso [idCurso=" + idCurso + ", idioma=" + idioma + ", horario=" + horario + ", dificultad="
-				+ dificultad + ", programa=" + programa + "]";
+		return "Curso [idCurso=" + idCurso + ", idioma=" + idioma + ", dia=" + dia + ", horario=" + horario
+				+ ", dificultad=" + dificultad + ", programa=" + programa + "]";
 	}
+
+
 }

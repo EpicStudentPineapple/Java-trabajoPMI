@@ -12,6 +12,7 @@ public class Alumno extends Persona{
 		// TODO Auto-generated constructor stub
 	}
 
+	sd
 	// Getters & Setters
 	public int getNivelIdioma() {
 		return nivelIdioma;

@@ -21,7 +21,7 @@
 	            System.out.println("Driver cargado");
 	            try {
 	                // Establecemos la conexión con la BD
-	                conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/escuela_idiomas", "root", "1DAW3_BBDD");
+	                conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/escuela_idiomas", "root", "admin");
 	                System.out.println("Conexión establecida");
 	            } catch (Exception e) {
 	                System.out.println("Error en la conexión");

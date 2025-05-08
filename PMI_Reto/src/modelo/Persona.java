@@ -4,9 +4,9 @@ public abstract class Persona {
 
 	// Atributos
 	public String dni;
-	public String contraseña;
 	public String nombre;
 	public String apellido;
+	public String contraseña;
 	
 	// Constructor
 	public Persona(String dni, String contraseña, String nombre, String apellido) {

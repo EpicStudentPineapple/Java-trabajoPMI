@@ -6,12 +6,17 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/1daw3/eclipse-workspace/mysql-connector-j-9.1.0 (3).jar">
+	<classpathentry kind="lib" path="C:/Users/iiker/OneDrive/Desktop/Conectores java/hamcrest-core-1.3.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/1daw3/eclipse-workspace/hamcrest-core-1.3 (1).jar">
+	<classpathentry kind="lib" path="C:/Users/iiker/OneDrive/Desktop/Conectores java/junit-4.13.2.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/iiker/OneDrive/Desktop/Conectores java/mysql-connector-j-9.1.0.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

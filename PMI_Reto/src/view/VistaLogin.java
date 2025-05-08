@@ -16,7 +16,7 @@ public class VistaLogin extends JFrame {
 	private JPanel contentPane;
 	private JButton btnNewButton;
 	private JButton btnNewButtonRegistrar;
-	private JTextField usuario;
+	private JTextField dni;
 	private JPasswordField password;
 
 
@@ -42,8 +42,8 @@ public class VistaLogin extends JFrame {
     public JButton getBtnRegistrar() {
     	return btnNewButtonRegistrar;
     }
-   public JTextField getTxtUsuario() {
-	   return usuario;
+   public JTextField getTxtDni() {
+	   return dni;
    }
    public JTextField getTxtContraseña() {
 	   return password;
@@ -64,9 +64,9 @@ public class VistaLogin extends JFrame {
 		
 		JPanel panel = new JPanel(new GridLayout(4, 2, 5, 5)); // 4 filas, 2 columnas
 
-		panel.add(new JLabel("Usuario"));
-		usuario = new JTextField(10);
-		panel.add(usuario);
+		panel.add(new JLabel("DNI"));
+		dni = new JTextField(10);
+		panel.add(dni);
 
 		panel.add(new JLabel("Contraseña"));
 		password = new JPasswordField(10);

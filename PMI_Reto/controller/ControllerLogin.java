@@ -9,6 +9,7 @@ import repositorios.RepositorioUsuario;
 import view.VistaAlumno;
 import view.VistaLogin;
 import view.VistaProfesor;
+import view.VistaRegistro;
 
 public class ControllerLogin {
 
@@ -23,6 +24,12 @@ public class ControllerLogin {
 
 			}
 		});
+		this.vista.getBtnRegistrar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarRegistro();
+            }
+        });
 	}
 
 	private void verificarUsuario() {
@@ -53,5 +60,11 @@ public class ControllerLogin {
 	public void iniciar() {
 		vista.setVisible(true);
 	}
+    private void mostrarRegistro() {
+        VistaRegistro vistaRegistro = new VistaRegistro();
+        new ControllerRegistro(vistaRegistro, vista);
+        vistaRegistro.setVisible(true);
+        vista.setVisible(false);
+    }
 
 }

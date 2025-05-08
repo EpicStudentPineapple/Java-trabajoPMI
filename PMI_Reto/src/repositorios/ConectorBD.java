@@ -10,8 +10,16 @@
 	    private static Connection conexion;
 	
 	    public static Connection getConexion() {
+	        try {
+	            if (conexion == null || conexion.isClosed()) {
+	                conectar();  // Reconectar si la conexión está cerrada o es null
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
 	        return conexion;
 	    }
+
 	
 	    // Método para establecer la conexión a la base de datos
 	    public static void conectar() {

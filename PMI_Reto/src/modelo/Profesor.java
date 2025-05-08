@@ -3,25 +3,25 @@ package modelo;
 public class Profesor extends Persona{
 
 	// Atributos propios
-	private String especializacionIdioma;
+	private String idioma;
 	private String experiencia;
 	
-	public Profesor(String dni, String contraseña, String nombre, String apellido, String especializacionIdioma, String experiencia) {
+	public Profesor(String dni, String contraseña, String nombre, String apellido, String idioma, String experiencia) {
 		super(dni, contraseña, nombre, apellido);
-		especializacionIdioma = this.especializacionIdioma;
+		idioma = this.idioma;
 		experiencia = this.experiencia;
 		// TODO Auto-generated constructor stub
 	}
 
 	
 	// Getters & Setters
-	public String getEspecializacionIdioma() {
-		return especializacionIdioma;
+	public String getIdioma() {
+		return idioma;
 	}
 
 
-	public void setIdioma(String especializacionIdioma) {
-		this.especializacionIdioma = especializacionIdioma;
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
 	}
 
 

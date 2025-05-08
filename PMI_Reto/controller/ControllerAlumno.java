@@ -1,12 +1,11 @@
 package controller;
 
 import view.VistaAlumno;
-import view.VistaProfesor;
 
 public class ControllerAlumno {
 	private VistaAlumno vista;
 
-	public ControllerAlumno(VistaAlumno vista) {
+	public ControllerAlumno(VistaAlumno vista, String nombre) {
 		this.vista = vista;
 	}
 

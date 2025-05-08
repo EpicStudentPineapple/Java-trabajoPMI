@@ -30,15 +30,16 @@ public class ControllerLogin {
 		String contraseña = vista.getTxtContraseña().getText();
 
 		if (RepositorioUsuario.verificarUsuario(dni, contraseña)) {
-			String tipoUsuario = RepositorioUsuario.obtenerTipoUsuario(dni);
+			 String tipoUsuario = RepositorioUsuario.obtenerTipoUsuario(dni);
+			 String nombre = RepositorioUsuario.obtenerNombrePorDNI(dni);
 			if (tipoUsuario.equals("alumno")) {
-				VistaAlumno vistaAlumno = new VistaAlumno();
-				ControllerAlumno controladorAlumno = new ControllerAlumno(vistaAlumno);
+				VistaAlumno vistaAlumno = new VistaAlumno(nombre);
+				ControllerAlumno controladorAlumno = new ControllerAlumno(vistaAlumno, nombre);
 				vista.dispose();
 				controladorAlumno.iniciar();
 			} else if (tipoUsuario.equals("profesor")) {
-				VistaProfesor vistaProfesor = new VistaProfesor();
-				ControllerProfesor controladorProfesor = new ControllerProfesor(vistaProfesor);
+				VistaProfesor vistaProfesor = new VistaProfesor(nombre);
+				ControllerProfesor controladorProfesor = new ControllerProfesor(vistaProfesor, nombre);
 				vista.dispose();
 				controladorProfesor.iniciar();
 			} else {

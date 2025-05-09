@@ -1,5 +1,8 @@
 package controller;
 
+import javax.swing.JOptionPane;
+
+import repositorios.RepositorioUsuario;
 import view.VistaAlumno;
 import view.VistaCambiarDatos;
 import view.VistaContraseña;
@@ -10,11 +13,12 @@ public class ControllerAlumno {
     private VistaAlumno vista;
     private VistaLogin vistaLogin;
 	private String nombre;
-    
-    public ControllerAlumno(VistaAlumno vistaAlumno, VistaLogin vistaLogin, String nombre) {
+    private String dni;
+    public ControllerAlumno(VistaAlumno vistaAlumno, VistaLogin vistaLogin, String nombre, String dni) {
         this.vista = vistaAlumno;
         this.vistaLogin = vistaLogin;
         this.nombre = nombre;
+        this.dni = dni;
         this.vista.getBtnCursos().addActionListener(e -> {
             VistaCursos vistaCursos = new VistaCursos();
             ControllerCursos controladorCursos = new ControllerCursos(vistaCursos, vista);
@@ -39,6 +43,18 @@ public class ControllerAlumno {
         this.vista.getBtnCerrar().addActionListener(e -> {
             vista.cerrar();
             vistaLogin.iniciar();
+        });
+        this.vista.getBtnBaja().addActionListener(e -> {
+            // Aquí llamas a tu método de modelo para eliminar al alumno
+            boolean eliminado = RepositorioUsuario.eliminarAlumnoPorDNI(dni);
+            
+            if (eliminado) {
+                vista.cerrar();
+                vistaLogin.iniciar();
+                JOptionPane.showMessageDialog(null, "Te has dado de baja correctamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo dar de baja.");
+            }
         });
     }
 

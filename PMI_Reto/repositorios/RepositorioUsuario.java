@@ -37,8 +37,8 @@ public class RepositorioUsuario {
     public static String obtenerNombrePorDNI(String dni) {
         String query = "SELECT Nombre FROM Persona WHERE dni = ?";
         try (PreparedStatement stmt = ConectorBD.getConexion().prepareStatement(query)) {
-            stmt.setString(1, dni);
-            var rs = stmt.executeQuery();
+        	stmt.setString(1, dni);
+        	ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return rs.getString("Nombre");
             }
@@ -48,8 +48,7 @@ public class RepositorioUsuario {
         return null;
     }
 
-    public static boolean registrarAlumno(String dni, String nombre, String apellido, String contraseña, int edad,
-                                          String correo) {
+    public static boolean registrarAlumno(String dni, String nombre, String apellido, String contraseña, int edad, String correo) {
         Connection conn = ConectorBD.getConexion();
         try {
             conn.setAutoCommit(false);
@@ -91,8 +90,7 @@ public class RepositorioUsuario {
         return false;
     }
 
-    public static boolean registrarProfesor(String dni, String nombre, String apellido, String contraseña,
-                                            String nivelExperiencia, String especializacion) {
+    public static boolean registrarProfesor(String dni, String nombre, String apellido, String contraseña, String nivelExperiencia, String especializacion) {
         Connection conn = ConectorBD.getConexion();
         try {
             conn.setAutoCommit(false);
@@ -145,6 +143,34 @@ public class RepositorioUsuario {
             return false;
         }
     }
+    public static boolean eliminarAlumnoPorDNI(String dni) {
+        String queryAlumno = "DELETE FROM Alumno WHERE dni = ?";
+        String queryPersona = "DELETE FROM Persona WHERE dni = ?";
+        
+        try (Connection conn = ConectorBD.getConexion()) {
+            conn.setAutoCommit(false);  // Importante: transacción
+
+            try (PreparedStatement stmtAlumno = conn.prepareStatement(queryAlumno);
+                 PreparedStatement stmtPersona = conn.prepareStatement(queryPersona)) {
+                
+                stmtAlumno.setString(1, dni);
+                stmtAlumno.executeUpdate();
+
+                stmtPersona.setString(1, dni);
+                stmtPersona.executeUpdate();
+                
+                conn.commit();
+                return true;
+            } catch (SQLException e) {
+                conn.rollback();
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 
 
 }

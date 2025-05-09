@@ -43,7 +43,7 @@ public class ControllerLogin {
 
 	        if (rol.equalsIgnoreCase("alumno")) {
 	            VistaAlumno vistaAlumno = new VistaAlumno(nombre);
-	            ControllerAlumno controladorAlumno = new ControllerAlumno(vistaAlumno, nombre);
+	            ControllerAlumno controladorAlumno = new ControllerAlumno(vistaAlumno, vista, nombre);
 	            vista.dispose();
 	            controladorAlumno.iniciar();
 	        } else if (rol.equalsIgnoreCase("profesor")) {

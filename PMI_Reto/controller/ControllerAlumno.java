@@ -2,6 +2,7 @@ package controller;
 
 import view.VistaAlumno;
 import view.VistaCambiarDatos;
+import view.VistaContraseña;
 import view.VistaCursos;
 import view.VistaLogin;
 
@@ -23,9 +24,16 @@ public class ControllerAlumno {
 
         this.vista.getBtnDatos().addActionListener(e -> {
             VistaCambiarDatos vistaCambiarDatos = new VistaCambiarDatos();
-            //new ControllerCambiarDatos(vistaCambiarDatos, vista);
-            vista.cerrar();
-           //  vistaCambiarDatos.iniciar();
+            ControllerCambiarDatos controladorCambiarDatos = new ControllerCambiarDatos(vistaCambiarDatos, vista);
+            vista.cerrar();            
+            controladorCambiarDatos.iniciar();  
+        });
+        
+        this.vista.getBtnContraseña().addActionListener(e -> {
+            VistaContraseña  vistaContraseña = new VistaContraseña();
+            ControllerContraseña controladorContraseña = new ControllerContraseña(vistaContraseña, vista);
+            vista.cerrar();            
+            controladorContraseña.iniciar();  
         });
 
         this.vista.getBtnCerrar().addActionListener(e -> {

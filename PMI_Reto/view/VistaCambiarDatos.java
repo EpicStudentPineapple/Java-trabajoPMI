@@ -12,4 +12,11 @@ public class VistaCambiarDatos extends JFrame{
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	public void iniciar() {
+	    this.setVisible(true);
+	}
+
+	public void cerrar() {
+	    this.dispose();
+	}
 }

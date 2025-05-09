@@ -2,7 +2,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
@@ -45,27 +44,22 @@ public class ControllerRegistroProfesor {
             return;
         }
 
-        try {
-            boolean registrado = RepositorioUsuario.registrarProfesor(
-                    vistaProfesor.getDni(),
-                    vistaProfesor.getNombre(),
-                    vistaProfesor.getApellido(),
-                    vistaProfesor.getContraseña(),
-                    nivelExperiencia,
-                    especializacion
-            );
+        boolean registrado = RepositorioUsuario.registrarProfesor(
+                vistaProfesor.getDni(),
+                vistaProfesor.getNombre(),
+                vistaProfesor.getApellido(),
+                vistaProfesor.getContraseña(),
+                nivelExperiencia,
+                especializacion
+        );
 
-            if (registrado) {
-                JOptionPane.showMessageDialog(vistaProfesor, "Profesor registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                vistaLogin.setVisible(true);
-                vistaProfesor.dispose();
-                vistaRegistroPrincipal.dispose();
-            } else {
-                JOptionPane.showMessageDialog(vistaProfesor, "No se pudo registrar al profesor", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(vistaProfesor, "Error al registrar en la base de datos: " + ex.getMessage(), "Error de SQL", JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
+        if (registrado) {
+            JOptionPane.showMessageDialog(vistaProfesor, "Profesor registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            vistaLogin.setVisible(true);
+            vistaProfesor.dispose();
+            vistaRegistroPrincipal.dispose();
+        } else {
+            JOptionPane.showMessageDialog(vistaProfesor, "No se pudo registrar al profesor", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

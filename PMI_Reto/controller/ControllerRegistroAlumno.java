@@ -2,7 +2,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
@@ -58,27 +57,22 @@ public class ControllerRegistroAlumno {
             return;
         }
 
-        try {
-            boolean registrado = RepositorioUsuario.registrarAlumno(
-                    vistaAlumno.getDni(),
-                    vistaAlumno.getNombre(),
-                    vistaAlumno.getApellido(),
-                    vistaAlumno.getContraseña(),
-                    edadInt,
-                    correo
-            );
+        boolean registrado = RepositorioUsuario.registrarAlumno(
+                vistaAlumno.getDni(),
+                vistaAlumno.getNombre(),
+                vistaAlumno.getApellido(),
+                vistaAlumno.getContraseña(),
+                edadInt,
+                correo
+        );
 
-            if (registrado) {
-                JOptionPane.showMessageDialog(vistaAlumno, "Alumno registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                vistaLogin.setVisible(true);
-                vistaAlumno.dispose();
-                vistaRegistroPrincipal.dispose();
-            } else {
-                JOptionPane.showMessageDialog(vistaAlumno, "No se pudo registrar al alumno (registro duplicado u otro motivo)", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(vistaAlumno, "Error al registrar en la base de datos: " + ex.getMessage(), "Error de SQL", JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
+        if (registrado) {
+            JOptionPane.showMessageDialog(vistaAlumno, "Alumno registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            vistaLogin.setVisible(true);
+            vistaAlumno.dispose();
+            vistaRegistroPrincipal.dispose();
+        } else {
+            JOptionPane.showMessageDialog(vistaAlumno, "No se pudo registrar al alumno (registro duplicado u otro motivo)", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

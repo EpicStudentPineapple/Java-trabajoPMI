@@ -16,6 +16,7 @@ public class VistaAlumno extends JFrame {
     private JButton btnCursos;
     private JButton btnDatos;
     private JButton btnCerrar;
+    private JButton btnContraseña;
     public VistaAlumno(String nombre) {
         setTitle("Bienvenido " + nombre);
         setSize(400, 300);
@@ -30,13 +31,16 @@ public class VistaAlumno extends JFrame {
 
 
         JPanel panelBotones = new JPanel();
-        panelBotones.setLayout(new GridLayout(3, 1, 10, 10));
+        panelBotones.setLayout(new GridLayout(4, 1, 10, 10));
 
         btnCursos = new JButton("Ver Cursos");
         panelBotones.add(btnCursos);
 
         btnDatos = new JButton("Cambiar Datos");
         panelBotones.add(btnDatos);
+        
+        btnContraseña = new JButton("Restablecer Contraseña");
+        panelBotones.add(btnContraseña);
         
         btnCerrar = new JButton("Cerrar Sesión");
         panelBotones.add(btnCerrar);
@@ -55,6 +59,9 @@ public class VistaAlumno extends JFrame {
     }
     public JButton getBtnCerrar() {
         return btnCerrar;
+    }
+    public JButton getBtnContraseña() {
+        return btnContraseña;
     }
     public void iniciar() {
         this.setVisible(true);

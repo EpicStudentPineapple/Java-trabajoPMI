@@ -3,10 +3,10 @@ package modelo;
 public class Alumno extends Persona {
 
 	// Atributos propios
-	private int nivelIdioma;
+	private String nivelIdioma;
 	private String correo;
 
-	public Alumno(String dni, String contraseña, String nombre, String apellido, String rol, int nivelIdioma,
+	public Alumno(String dni, String contraseña, String nombre, String apellido, String rol, String nivelIdioma,
 			String correo) {
 		super(dni, contraseña, nombre, apellido, rol);
 		this.nivelIdioma = nivelIdioma;
@@ -26,11 +26,11 @@ public class Alumno extends Persona {
 
 	}
 
-	public int getNivelIdioma() {
+	public String getNivelIdioma() {
 		return nivelIdioma;
 	}
 
-	public void setNivelIdioma(int nivelIdioma) {
+	public void setNivelIdioma(String nivelIdioma) {
 		this.nivelIdioma = nivelIdioma;
 	}
 

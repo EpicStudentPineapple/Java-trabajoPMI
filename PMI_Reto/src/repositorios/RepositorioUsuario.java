@@ -2,6 +2,7 @@ package repositorios;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RepositorioUsuario {
@@ -18,27 +19,25 @@ public class RepositorioUsuario {
         return false;
     }
 
-    public static String obtenerTipoUsuario(String dni) {
-        String tipo = "ninguno";
-        String queryAlumno = "SELECT dni FROM Alumno WHERE dni = ?";
-        String queryProfesor = "SELECT dni FROM Profesor WHERE dni = ?";
-        try (Connection con = ConectorBD.getConexion();
-             PreparedStatement psAlumno = con.prepareStatement(queryAlumno);
-             PreparedStatement psProfesor = con.prepareStatement(queryProfesor)) {
-            psAlumno.setString(1, dni);
-            if (psAlumno.executeQuery().next()) {
-                tipo = "alumno";
-            } else {
-                psProfesor.setString(1, dni);
-                if (psProfesor.executeQuery().next()) {
-                    tipo = "profesor";
-                }
+    public static String obtenerRol(String dni) {
+        String rol = "ninguno";
+        String query = "SELECT rol FROM Persona WHERE dni = ?";
+        
+        try (PreparedStatement stmt = ConectorBD.getConexion().prepareStatement(query)) {
+            stmt.setString(1, dni);
+            
+            ResultSet resultSet = stmt.executeQuery();
+            if (resultSet.next()) {
+                rol = resultSet.getString("rol");
             }
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return tipo;
+        
+        return rol;
     }
+
 
     public static String obtenerNombrePorDNI(String dni) {
         String query = "SELECT Nombre FROM Persona WHERE dni = ?";

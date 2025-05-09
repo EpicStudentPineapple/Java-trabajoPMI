@@ -44,5 +44,6 @@
 	    // Método para cerrar la conexión
 	    public static void cerrarConexion() throws SQLException {
 	        conexion.close();
+	        System.out.println("Conexion cerrada");
 	    }
 	}

@@ -6,14 +6,17 @@ public class Profesor extends Persona{
 	private String idioma;
 	private String experiencia;
 	
-	public Profesor(String dni, String contraseña, String nombre, String apellido, String idioma, String experiencia) {
-		super(dni, contraseña, nombre, apellido);
-		idioma = this.idioma;
-		experiencia = this.experiencia;
-		// TODO Auto-generated constructor stub
-	}
+
 
 	
+	public Profesor(String dni, String contraseña, String nombre, String apellido, String rol, String idioma,
+			String experiencia) {
+		super(dni, contraseña, nombre, apellido, rol);
+		this.idioma = idioma;
+		this.experiencia = experiencia;
+	}
+
+
 	// Getters & Setters
 	public String getIdioma() {
 		return idioma;

@@ -12,82 +12,73 @@ import javax.swing.JButton;
 
 public class VistaLogin extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JButton btnNewButton;
-	private JButton btnNewButtonRegistrar;
-	private JTextField dni;
-	private JPasswordField password;
+    private static final long serialVersionUID = 1L;
+    private JPanel contentPane;
+    private JButton btnLogin;
+    private JButton btnRegistrar;
+    private JButton btnRestablecerContraseña;
+    private JTextField dni;
+    private JPasswordField password;
 
-
-	/**
-	 * Launch the application.
-	 */
-	/*El main para cargar una vista ejecutandola directamente.
-	 * public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaLogin frame = new VentanaLogin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
     public JButton getBtnLogin() {
-    	return btnNewButton;
+        return btnLogin;
     }
+
     public JButton getBtnRegistrar() {
-    	return btnNewButtonRegistrar;
+        return btnRegistrar;
     }
-   public JTextField getTxtDni() {
-	   return dni;
-   }
-   public JTextField getTxtContraseña() {
-	   return password;
-   }
 
-	/**
-	 * Create the frame.
-	 */
-	public VistaLogin() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+    public JButton getBtnOlvidarContraseña() {
+        return btnRestablecerContraseña;
+    }
 
-		setContentPane(contentPane);
-		contentPane.setLayout(new FlowLayout(FlowLayout.LEFT));
-		
-		JPanel panel = new JPanel(new GridLayout(4, 2, 5, 5)); // 4 filas, 2 columnas
+    public JTextField getTxtDni() {
+        return dni;
+    }
 
-		panel.add(new JLabel("DNI"));
-		dni = new JTextField(10);
-		panel.add(dni);
+    public JTextField getTxtContraseña() {
+        return password;
+    }
 
-		panel.add(new JLabel("Contraseña"));
-		password = new JPasswordField(10);
-		panel.add(password);
+    public VistaLogin() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
 
-		panel.add(new JLabel("")); // Celda vacía para mantener alineación
-		btnNewButton = new JButton("Login");
-		panel.add(btnNewButton);
-		panel.add(new JLabel("")); // Celda vacía para mantener alineación
-		btnNewButtonRegistrar = new JButton("Registrar");
-		panel.add(btnNewButtonRegistrar);
-		contentPane.add(panel);
-		
-		
-	}
-	public void iniciar() {
-	    this.setVisible(true);
-	}
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-	public void cerrar() {
-	    this.dispose();
-	}
+        JPanel panel = new JPanel(new GridLayout(5, 2, 5, 5));
 
+        panel.add(new JLabel("DNI"));
+        dni = new JTextField(10);
+        panel.add(dni);
+
+        panel.add(new JLabel("Contraseña"));
+        password = new JPasswordField(10);
+        panel.add(password);
+
+        panel.add(new JLabel(""));
+        btnLogin = new JButton("Login");
+        panel.add(btnLogin);
+
+        panel.add(new JLabel(""));
+        btnRegistrar = new JButton("Registrar");
+        panel.add(btnRegistrar);
+
+        panel.add(new JLabel(""));
+        btnRestablecerContraseña = new JButton("Restablecer Contraseña");
+        panel.add(btnRestablecerContraseña);
+
+        contentPane.add(panel);
+    }
+
+    public void iniciar() {
+        this.setVisible(true);
+    }
+
+    public void cerrar() {
+        this.dispose();
+    }
 }

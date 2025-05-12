@@ -148,7 +148,7 @@ public class RepositorioUsuario {
         String queryPersona = "DELETE FROM Persona WHERE dni = ?";
         
         try (Connection conn = ConectorBD.getConexion()) {
-            conn.setAutoCommit(false);  // Importante: transacción
+            conn.setAutoCommit(false);
 
             try (PreparedStatement stmtAlumno = conn.prepareStatement(queryAlumno);
                  PreparedStatement stmtPersona = conn.prepareStatement(queryPersona)) {
@@ -170,6 +170,93 @@ public class RepositorioUsuario {
         }
         return false;
     }
+
+    public static boolean actualizarDatosUsuario(String dni, String nuevoNombre, String nuevoApellido, String nuevoCorreo, String nuevaContraseña) {
+        String queryPersona = "UPDATE Persona SET nombre = ?, apellido = ?, contraseña = ? WHERE dni = ?";
+        String queryCorreo = "UPDATE Alumno SET correo = ? WHERE dni = ?";
+
+        try (Connection conn = ConectorBD.getConexion()) {
+            conn.setAutoCommit(false);
+
+            try (
+                PreparedStatement stmtPersona = conn.prepareStatement(queryPersona);
+                PreparedStatement stmtCorreo = conn.prepareStatement(queryCorreo)
+            ) {
+                // Actualiza tabla Persona
+                stmtPersona.setString(1, nuevoNombre);
+                stmtPersona.setString(2, nuevoApellido);
+                stmtPersona.setString(3, nuevaContraseña);
+                stmtPersona.setString(4, dni);
+                stmtPersona.executeUpdate();
+
+                // Actualiza correo en tabla Alumno
+                stmtCorreo.setString(1, nuevoCorreo);
+                stmtCorreo.setString(2, dni);
+                stmtCorreo.executeUpdate();
+
+                conn.commit();
+                return true;
+
+            } catch (SQLException e) {
+                conn.rollback();
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public static boolean actualizarNombreApellido(String dni, String nuevoNombre, String nuevoApellido) {
+        String query = "UPDATE Persona SET nombre = ?, apellido = ? WHERE dni = ?";
+        try (PreparedStatement stmt = ConectorBD.getConexion().prepareStatement(query)) {
+            stmt.setString(1, nuevoNombre);
+            stmt.setString(2, nuevoApellido);
+            stmt.setString(3, dni);
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false; 
+        }
+    }
+
+    public static boolean actualizarCorreo(String dni, String nuevoCorreo) {
+        String query = "UPDATE Alumno SET correo = ? WHERE dni = ?";
+        try (PreparedStatement stmt = ConectorBD.getConexion().prepareStatement(query)) {
+            stmt.setString(1, nuevoCorreo);
+            stmt.setString(2, dni);
+            stmt.executeUpdate(); 
+            return true; 
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;   
+        }
+    }
+    public static boolean verificarDniCorreo(String dni, String correo) {
+        String queryCheck = "SELECT * FROM Alumno WHERE dni = ? AND correo = ?";
+        try (PreparedStatement checkStmt = ConectorBD.getConexion().prepareStatement(queryCheck)) {
+            checkStmt.setString(1, dni);
+            checkStmt.setString(2, correo);
+            ResultSet rs = checkStmt.executeQuery();
+            return rs.next();  // Si existe un registro que coincida, retorna true
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;  // Si no existe, retorna false
+    }
+    public static boolean existeUsuario(String dni) {
+        String query = "SELECT * FROM Persona WHERE dni = ?";
+        try (PreparedStatement stmt = ConectorBD.getConexion().prepareStatement(query)) {
+            stmt.setString(1, dni);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next(); // Si existe al menos un registro con ese DNI
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
 
 
 

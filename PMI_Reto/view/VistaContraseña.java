@@ -1,7 +1,11 @@
 package view;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 public class VistaContraseña extends JFrame {
 
@@ -14,10 +18,10 @@ public class VistaContraseña extends JFrame {
 
     public VistaContraseña() {
         setTitle("Restablecer Contraseña");
-        setSize(400, 300);
+        setSize(400, 250);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(5, 2, 10, 10));
+        setLayout(new GridLayout(4, 2, 10, 10));
 
         add(new JLabel("DNI:"));
         txtDni = new JTextField();

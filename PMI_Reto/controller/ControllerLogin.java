@@ -6,68 +6,73 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import repositorios.RepositorioUsuario;
-import view.VistaAdministrador;
-import view.VistaAlumno;
-import view.VistaLogin;
-import view.VistaProfesor;
-import view.VistaRegistro;
+import view.*;
 
 public class ControllerLogin {
 
-	private VistaLogin vista;
+    private VistaLogin vista;
 
-	public ControllerLogin(VistaLogin vista) {
-		this.vista = vista;
-		this.vista.getBtnLogin().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				verificarUsuario();
+    public ControllerLogin(VistaLogin vista) {
+        this.vista = vista;
 
-			}
-		});
-		this.vista.getBtnRegistrar().addActionListener(new ActionListener() {
+        this.vista.getBtnLogin().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                verificarUsuario();
+            }
+        });
+
+        this.vista.getBtnRegistrar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mostrarRegistro();
             }
         });
-	}
 
-	private void verificarUsuario() {
-	    String dni = vista.getTxtDni().getText();
-	    String contraseña = vista.getTxtContraseña().getText();
+        this.vista.getBtnOlvidarContraseña().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarRecuperacionContraseña();
+            }
+        });
+    }
 
-	    if (RepositorioUsuario.verificarUsuario(dni, contraseña)) {
-	        String rol = RepositorioUsuario.obtenerRol(dni);
-	        String nombre = RepositorioUsuario.obtenerNombrePorDNI(dni);
+    private void verificarUsuario() {
+        String dni = vista.getTxtDni().getText();
+        String contraseña = vista.getTxtContraseña().getText();
 
-	        if (rol.equalsIgnoreCase("alumno")) {
-	            VistaAlumno vistaAlumno = new VistaAlumno(nombre);
-	            ControllerAlumno controladorAlumno = new ControllerAlumno(vistaAlumno, vista, nombre, dni);
-	            vista.dispose();
-	            controladorAlumno.iniciar();
-	        } else if (rol.equalsIgnoreCase("profesor")) {
-	            VistaProfesor vistaProfesor = new VistaProfesor(nombre);
-	            ControllerProfesor controladorProfesor = new ControllerProfesor(vistaProfesor, nombre);
-	            vista.dispose();
-	            controladorProfesor.iniciar();
-	        } else if (rol.equalsIgnoreCase("administrador")) {
-	            VistaAdministrador vistaAdministrador = new VistaAdministrador(nombre);
-	            ControllerAdministrador controladorAdministrador = new ControllerAdministrador(vistaAdministrador, nombre);
-	            vista.dispose();
-	            controladorAdministrador.iniciar();
-	        } else {
-	            JOptionPane.showMessageDialog(vista, "Usuario sin rol válido.");
-	        }
-	    } else {
-	        JOptionPane.showMessageDialog(vista, "DNI o contraseña incorrectos.");
-	    }
-	}
+        if (RepositorioUsuario.verificarUsuario(dni, contraseña)) {
+            String rol = RepositorioUsuario.obtenerRol(dni);
+            String nombre = RepositorioUsuario.obtenerNombrePorDNI(dni);
 
+            switch (rol.toLowerCase()) {
+                case "alumno":
+                    VistaAlumno vistaAlumno = new VistaAlumno(nombre);
+                    ControllerAlumno controladorAlumno = new ControllerAlumno(vistaAlumno, vista, nombre, dni);
+                    vista.dispose();
+                    controladorAlumno.iniciar();
+                    break;
+                case "profesor":
+                    VistaProfesor vistaProfesor = new VistaProfesor(nombre);
+                    ControllerProfesor controladorProfesor = new ControllerProfesor(vistaProfesor, nombre);
+                    vista.dispose();
+                    controladorProfesor.iniciar();
+                    break;
+                case "administrador":
+                    VistaAdministrador vistaAdministrador = new VistaAdministrador(nombre);
+                    ControllerAdministrador controladorAdministrador = new ControllerAdministrador(vistaAdministrador, nombre);
+                    vista.dispose();
+                    controladorAdministrador.iniciar();
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(vista, "Usuario sin rol válido.");
+                    break;
+            }
+        } else {
+            JOptionPane.showMessageDialog(vista, "DNI o contraseña incorrectos.");
+        }
+    }
 
-	public void iniciar() {
-		vista.setVisible(true);
-	}
     private void mostrarRegistro() {
         VistaRegistro vistaRegistro = new VistaRegistro();
         new ControllerRegistro(vistaRegistro, vista);
@@ -75,4 +80,14 @@ public class ControllerLogin {
         vista.setVisible(false);
     }
 
+    private void mostrarRecuperacionContraseña() {
+        VistaContraseña vistaContraseña = new VistaContraseña();
+        ControllerContraseña controllerContraseña = new ControllerContraseña(vistaContraseña, vista);
+        vista.setVisible(false);
+        controllerContraseña.iniciar();
+    }
+
+    public void iniciar() {
+        vista.setVisible(true);
+    }
 }

@@ -1,24 +1,24 @@
 package controller;
 
-import repositorios.RepositorioUsuario;
-import view.VistaAlumno;
-import view.VistaContraseña;
+import javax.swing.JOptionPane;
 
-import javax.swing.*;
+import repositorios.RepositorioUsuario;
+import view.VistaContraseña;
+import view.VistaLogin;
 
 public class ControllerContraseña {
 
     private VistaContraseña vista;
-    private VistaAlumno vistaAlumno;
+    private VistaLogin vistaLogin;
 
-    public ControllerContraseña(VistaContraseña vista, VistaAlumno vistaAlumno) {
+    public ControllerContraseña(VistaContraseña vista, VistaLogin vistaLogin) {
         this.vista = vista;
-        this.vistaAlumno = vistaAlumno;
+        this.vistaLogin = vistaLogin;
 
         // Acción botón "Volver"
         vista.getBtnVolver().addActionListener(e -> {
             vista.cerrar();
-            vistaAlumno.iniciar();
+            vistaLogin.iniciar();
         });
 
         // Acción botón "Restablecer"
@@ -27,24 +27,32 @@ public class ControllerContraseña {
             String nuevaContraseña = String.valueOf(vista.getTxtNuevaContraseña().getPassword());
             String confirmarContraseña = String.valueOf(vista.getTxtConfirmarContraseña().getPassword());
 
+            // Validar que no haya campos vacíos
             if (dni.isEmpty() || nuevaContraseña.isEmpty() || confirmarContraseña.isEmpty()) {
                 JOptionPane.showMessageDialog(vista, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
+            // Validar que las contraseñas coincidan
             if (!nuevaContraseña.equals(confirmarContraseña)) {
                 JOptionPane.showMessageDialog(vista, "Las contraseñas no coinciden.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            boolean actualizado = RepositorioUsuario.actualizarContraseña(dni, nuevaContraseña);
+            // Verificar que el usuario exista en la base de datos
+            boolean usuarioExiste = RepositorioUsuario.existeUsuario(dni);
 
-            if (actualizado) {
-                JOptionPane.showMessageDialog(vista, "Contraseña actualizada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                vista.cerrar();
-                vistaAlumno.iniciar();
+            if (usuarioExiste) {
+                boolean actualizado = RepositorioUsuario.actualizarContraseña(dni, nuevaContraseña);
+                if (actualizado) {
+                    JOptionPane.showMessageDialog(vista, "Contraseña actualizada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    vista.cerrar();
+                    vistaLogin.iniciar();
+                } else {
+                    JOptionPane.showMessageDialog(vista, "No se pudo actualizar la contraseña.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             } else {
-                JOptionPane.showMessageDialog(vista, "No se pudo actualizar la contraseña. Verifica el DNI.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(vista, "El usuario con ese DNI no existe.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
     }

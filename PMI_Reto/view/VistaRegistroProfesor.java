@@ -36,7 +36,7 @@ public class VistaRegistroProfesor extends JFrame {
         setTitle("Registro de Profesor");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 250);
-        
+        setLocationRelativeTo(null);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
         setContentPane(contentPane);

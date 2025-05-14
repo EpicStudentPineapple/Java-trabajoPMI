@@ -38,9 +38,15 @@ public class ControllerRegistroAlumno {
     private void registrarAlumno() {
         String edad = vistaAlumno.getTxtEdad().getText();
         String correo = vistaAlumno.getTxtCorreo().getText();
+        String dni = vistaAlumno.getDni();
 
         if (edad.isEmpty() || correo.isEmpty()) {
             JOptionPane.showMessageDialog(vistaAlumno, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (RepositorioUsuario.existeUsuario(dni)) {
+            JOptionPane.showMessageDialog(vistaAlumno, "Ya existe un usuario con ese DNI", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -58,7 +64,7 @@ public class ControllerRegistroAlumno {
         }
 
         boolean registrado = RepositorioUsuario.registrarAlumno(
-                vistaAlumno.getDni(),
+                dni,
                 vistaAlumno.getNombre(),
                 vistaAlumno.getApellido(),
                 vistaAlumno.getContraseña(),
@@ -72,7 +78,7 @@ public class ControllerRegistroAlumno {
             vistaAlumno.dispose();
             vistaRegistroPrincipal.dispose();
         } else {
-            JOptionPane.showMessageDialog(vistaAlumno, "No se pudo registrar al alumno (registro duplicado u otro motivo)", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(vistaAlumno, "No se pudo registrar al alumno", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

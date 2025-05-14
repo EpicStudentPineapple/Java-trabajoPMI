@@ -48,7 +48,7 @@ public class VistaLogin extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(new FlowLayout(FlowLayout.LEFT));
-
+        setLocationRelativeTo(null);
         JPanel panel = new JPanel(new GridLayout(5, 2, 5, 5));
 
         panel.add(new JLabel("DNI"));

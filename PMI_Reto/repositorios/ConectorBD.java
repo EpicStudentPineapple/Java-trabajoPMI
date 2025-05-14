@@ -12,7 +12,7 @@
 	    public static Connection getConexion() {
 	        try {
 	            if (conexion == null || conexion.isClosed()) {
-	                conectar();  // Reconectar si la conexión está cerrada o es null
+	                conectar();  // Reconectar si la conexión esta cerrada o es null
 	            }
 	        } catch (SQLException e) {
 	            e.printStackTrace();

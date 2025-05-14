@@ -38,14 +38,20 @@ public class ControllerRegistroProfesor {
     private void registrarProfesor() {
         String nivelExperiencia = vistaProfesor.getComboNivelExperiencia().getSelectedItem().toString();
         String especializacion = vistaProfesor.getTxtEspecializacionIdioma().getText().trim();
+        String dni = vistaProfesor.getDni();
 
         if (nivelExperiencia.isEmpty() || especializacion.isEmpty()) {
             JOptionPane.showMessageDialog(vistaProfesor, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
+        if (RepositorioUsuario.existeUsuario(dni)) {
+            JOptionPane.showMessageDialog(vistaProfesor, "Ya existe un usuario con ese DNI", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         boolean registrado = RepositorioUsuario.registrarProfesor(
-                vistaProfesor.getDni(),
+                dni,
                 vistaProfesor.getNombre(),
                 vistaProfesor.getApellido(),
                 vistaProfesor.getContraseña(),
@@ -62,4 +68,5 @@ public class ControllerRegistroProfesor {
             JOptionPane.showMessageDialog(vistaProfesor, "No se pudo registrar al profesor", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
 }

@@ -182,14 +182,14 @@ public class RepositorioUsuario {
                 PreparedStatement stmtPersona = conn.prepareStatement(queryPersona);
                 PreparedStatement stmtCorreo = conn.prepareStatement(queryCorreo)
             ) {
-                // Actualiza tabla Persona
+               
                 stmtPersona.setString(1, nuevoNombre);
                 stmtPersona.setString(2, nuevoApellido);
                 stmtPersona.setString(3, nuevaContraseña);
                 stmtPersona.setString(4, dni);
                 stmtPersona.executeUpdate();
 
-                // Actualiza correo en tabla Alumno
+   
                 stmtCorreo.setString(1, nuevoCorreo);
                 stmtCorreo.setString(2, dni);
                 stmtCorreo.executeUpdate();
@@ -238,18 +238,18 @@ public class RepositorioUsuario {
             checkStmt.setString(1, dni);
             checkStmt.setString(2, correo);
             ResultSet rs = checkStmt.executeQuery();
-            return rs.next();  // Si existe un registro que coincida, retorna true
+            return rs.next(); 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;  // Si no existe, retorna false
+        return false; 
     }
     public static boolean existeUsuario(String dni) {
         String query = "SELECT * FROM Persona WHERE dni = ?";
         try (PreparedStatement stmt = ConectorBD.getConexion().prepareStatement(query)) {
             stmt.setString(1, dni);
             ResultSet rs = stmt.executeQuery();
-            return rs.next(); // Si existe al menos un registro con ese DNI
+            return rs.next(); 
         } catch (SQLException e) {
             e.printStackTrace();
         }

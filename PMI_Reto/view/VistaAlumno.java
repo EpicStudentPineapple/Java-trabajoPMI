@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -72,5 +71,6 @@ public class VistaAlumno extends JFrame {
     public void cerrar() {
         this.dispose();
     }
+
 
 }

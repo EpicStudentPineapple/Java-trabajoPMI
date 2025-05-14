@@ -15,25 +15,25 @@ public class ControllerContraseña {
         this.vista = vista;
         this.vistaLogin = vistaLogin;
 
-        // Acción botón "Volver"
+        // Boton Volver
         vista.getBtnVolver().addActionListener(e -> {
             vista.cerrar();
             vistaLogin.iniciar();
         });
 
-        // Acción botón "Restablecer"
+        // Boton Restablecer
         vista.getBtnRestablecer().addActionListener(e -> {
             String dni = vista.getTxtDni().getText().trim();
             String nuevaContraseña = String.valueOf(vista.getTxtNuevaContraseña().getPassword());
             String confirmarContraseña = String.valueOf(vista.getTxtConfirmarContraseña().getPassword());
 
-            // Validar que no haya campos vacíos
+            // Validacion campos vacios
             if (dni.isEmpty() || nuevaContraseña.isEmpty() || confirmarContraseña.isEmpty()) {
                 JOptionPane.showMessageDialog(vista, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            // Validar que las contraseñas coincidan
+            // Validacion contraseñas iguales
             if (!nuevaContraseña.equals(confirmarContraseña)) {
                 JOptionPane.showMessageDialog(vista, "Las contraseñas no coinciden.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;

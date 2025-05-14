@@ -4,8 +4,10 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class VistaContraseña extends JFrame {
 
@@ -21,25 +23,28 @@ public class VistaContraseña extends JFrame {
         setSize(400, 250);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(4, 2, 10, 10));
 
-        add(new JLabel("DNI:"));
+        JPanel contentPane = new JPanel(new GridLayout(4, 2, 10, 10));
+        contentPane.setBorder(new EmptyBorder(20, 20, 20, 20)); 
+        setContentPane(contentPane);
+
+        contentPane.add(new JLabel("DNI:"));
         txtDni = new JTextField();
-        add(txtDni);
+        contentPane.add(txtDni);
 
-        add(new JLabel("Nueva Contraseña:"));
+        contentPane.add(new JLabel("Nueva Contraseña:"));
         txtNuevaContraseña = new JPasswordField();
-        add(txtNuevaContraseña);
+        contentPane.add(txtNuevaContraseña);
 
-        add(new JLabel("Confirmar Contraseña:"));
+        contentPane.add(new JLabel("Confirmar Contraseña:"));
         txtConfirmarContraseña = new JPasswordField();
-        add(txtConfirmarContraseña);
+        contentPane.add(txtConfirmarContraseña);
 
         btnVolver = new JButton("Volver");
-        add(btnVolver);
+        contentPane.add(btnVolver);
 
         btnRestablecer = new JButton("Restablecer");
-        add(btnRestablecer);
+        contentPane.add(btnRestablecer);
     }
 
     public void iniciar() {

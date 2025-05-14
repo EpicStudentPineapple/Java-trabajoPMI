@@ -10,7 +10,6 @@ public abstract class Persona {
 	private String rol;
 	
 	// Constructor
-	
 
 	public Persona(String dni, String contraseña, String nombre, String apellido, String rol) {
 		super();

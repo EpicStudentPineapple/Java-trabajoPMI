@@ -1,7 +1,5 @@
 package modelo;
 
-import java.sql.Date;
-
 public class Curso {
 
 	// Atributos
@@ -9,11 +7,11 @@ public class Curso {
 	private String idioma;
 	private String dia;
 	private String horario;
-	private int dificultad;
+	private String dificultad;
 	private String programa;
 		
 	// Constructor
-	public Curso(int idCurso, String idioma, String dia, String horario, int dificultad, String programa) {
+	public Curso(int idCurso, String idioma, String dia, String horario, String dificultad, String programa) {
 		super();
 		this.idCurso = idCurso;
 		this.idioma = idioma;
@@ -23,6 +21,22 @@ public class Curso {
 		this.programa = programa;
 	}
 	
+	
+	public Curso(String idioma, String dia, String horario, String dificultad, String programa) {
+		super();
+		this.idioma = idioma;
+		this.dia = dia;
+		this.horario = horario;
+		this.dificultad = dificultad;
+		this.programa = programa;
+	}
+
+
+	public Curso(String idioma2, String dificultad2) {
+		this.idioma = idioma2;
+		this.dificultad = dificultad2;
+	}
+
 	// Getters & Setters
 	public int getIdCurso() {
 		return idCurso;
@@ -55,11 +69,11 @@ public class Curso {
 		this.horario = horario;
 	}
 
-	public int getDificultad() {
+	public String getDificultad() {
 		return dificultad;
 	}
 
-	public void setDificultad(int dificultad) {
+	public void setDificultad(String dificultad) {
 		this.dificultad = dificultad;
 	}
 
@@ -70,12 +84,11 @@ public class Curso {
 	public void setPrograma(String programa) {
 		this.programa = programa;
 	}
-
 	@Override
 	public String toString() {
-		return "Curso [idCurso=" + idCurso + ", idioma=" + idioma + ", dia=" + dia + ", horario=" + horario
-				+ ", dificultad=" + dificultad + ", programa=" + programa + "]";
+	    return idioma + " - " + dificultad; 
 	}
+
 
 
 }

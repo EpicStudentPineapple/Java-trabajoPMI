@@ -3,11 +3,11 @@ package modelo;
 public abstract class Persona {
 
 	// Atributos
-	private String dni;
-	private String contraseña;
-	private String nombre;
-	private String apellido;
-	private String rol;
+	protected String dni;
+	protected String contraseña;
+	protected String nombre;
+	protected String apellido;
+	protected String rol;
 	
 	// Constructor
 

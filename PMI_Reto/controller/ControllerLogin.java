@@ -42,6 +42,11 @@ public class ControllerLogin {
         String contraseña = vista.getTxtContraseña().getText();
 
         if (RepositorioUsuario.verificarUsuario(dni, contraseña)) {
+            if (RepositorioUsuario.estaBloqueado(dni)) {
+                JOptionPane.showMessageDialog(vista, "El usuario está bloqueado.");
+                return; // No permite continuar
+            }
+            
             String rol = RepositorioUsuario.obtenerRol(dni);
             String nombre = RepositorioUsuario.obtenerNombrePorDNI(dni);
 
@@ -60,7 +65,7 @@ public class ControllerLogin {
                     break;
                 case "administrador":
                     VistaAdministrador vistaAdministrador = new VistaAdministrador(nombre);
-                    ControllerAdministrador controladorAdministrador = new ControllerAdministrador(vistaAdministrador, nombre);
+                    ControllerAdministrador controladorAdministrador = new ControllerAdministrador(vistaAdministrador, vista, nombre);
                     vista.dispose();
                     controladorAdministrador.iniciar();
                     break;
@@ -72,6 +77,7 @@ public class ControllerLogin {
             JOptionPane.showMessageDialog(vista, "DNI o contraseña incorrectos.");
         }
     }
+
 
     private void mostrarRegistro() {
         VistaRegistro vistaRegistro = new VistaRegistro();

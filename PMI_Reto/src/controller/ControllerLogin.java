@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import repositorios.RepositorioUsuario;
+import repositorios.RepositorioPersona;
 import view.VistaAdministrador;
 import view.VistaAlumno;
 import view.VistaLogin;
@@ -37,18 +37,18 @@ public class ControllerLogin {
 	    String dni = vista.getTxtDni().getText();
 	    String contraseña = vista.getTxtContraseña().getText();
 
-	    if (RepositorioUsuario.verificarUsuario(dni, contraseña)) {
-	        String rol = RepositorioUsuario.obtenerRol(dni);
-	        String nombre = RepositorioUsuario.obtenerNombrePorDNI(dni);
+	    if (RepositorioPersona.verificarUsuario(dni, contraseña)) {
+	        String rol = RepositorioPersona.obtenerRol(dni);
+	        String nombre = RepositorioPersona.obtenerNombrePorDNI(dni);
 
 	        if (rol.equalsIgnoreCase("alumno")) {
 	            VistaAlumno vistaAlumno = new VistaAlumno(nombre);
-	            ControllerAlumno controladorAlumno = new ControllerAlumno(vistaAlumno, nombre);
+	            ControllerAlumno controladorAlumno = new ControllerAlumno(vistaAlumno, vista, nombre);
 	            vista.dispose();
 	            controladorAlumno.iniciar();
 	        } else if (rol.equalsIgnoreCase("profesor")) {
 	            VistaProfesor vistaProfesor = new VistaProfesor(nombre);
-	            ControllerProfesor controladorProfesor = new ControllerProfesor(vistaProfesor, nombre);
+	            ControllerProfesor controladorProfesor = new ControllerProfesor(vistaProfesor, vista, nombre);
 	            vista.dispose();
 	            controladorProfesor.iniciar();
 	        } else if (rol.equalsIgnoreCase("administrador")) {

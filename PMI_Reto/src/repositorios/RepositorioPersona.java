@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class RepositorioUsuario {
+public class RepositorioPersona {
 
 	public static boolean verificarUsuario(String dni, String contraseña) {
 		String queryCheck = "SELECT * FROM Persona WHERE dni = ? AND contraseña = ?";

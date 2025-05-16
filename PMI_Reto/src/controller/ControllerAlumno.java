@@ -1,42 +1,56 @@
 package controller;
 
+import javax.swing.JOptionPane;
+import repositorios.RepositorioUsuario;
 import view.VistaAlumno;
 import view.VistaCambiarDatos;
 import view.VistaCursos;
 import view.VistaLogin;
-import view.VistaProfesor;
 
 public class ControllerAlumno {
     private VistaAlumno vista;
     private VistaLogin vistaLogin;
     private String nombre;
-    
-    public ControllerAlumno(VistaAlumno vistaAlumno, VistaLogin vistaLogin, String nombre) {
+    private String dni;
+
+    public ControllerAlumno(VistaAlumno vistaAlumno, VistaLogin vistaLogin, String nombre, String dni) {
         this.vista = vistaAlumno;
         this.vistaLogin = vistaLogin;
         this.nombre = nombre;
+        this.dni = dni;
 
-        // Acción del botón Cursos
+        // Boton para ver cursos
         this.vista.getBtnCursos().addActionListener(e -> {
             VistaCursos vistaCursos = new VistaCursos();
-            VistaProfesor vistaProfesor = new VistaProfesor(nombre);  // Crear instancia de VistaProfesor
-            ControllerCursos controladorCursos = new ControllerCursos(vistaCursos, vistaAlumno, nombre);  // Pasar VistaProfesor en lugar de VistaAlumno
-            vista.cerrar();            
-            controladorCursos.iniciar();     
+            ControllerCursos controladorCursos = new ControllerCursos(vistaCursos, vista, dni); 
+            vista.cerrar();
+            controladorCursos.iniciar();
         });
 
-        // Acción del botón Datos
+        // Boton para cambiar datos
         this.vista.getBtnDatos().addActionListener(e -> {
             VistaCambiarDatos vistaCambiarDatos = new VistaCambiarDatos();
-            //new ControllerCambiarDatos(vistaCambiarDatos, vista);
+            ControllerCambiarDatos controladorCambiarDatos = new ControllerCambiarDatos(vistaCambiarDatos, vista, dni);
             vista.cerrar();
-            //  vistaCambiarDatos.iniciar();
+            controladorCambiarDatos.iniciar();
         });
 
-        // Acción del botón Cerrar
+        // Boton para cerrar sesión
         this.vista.getBtnCerrar().addActionListener(e -> {
             vista.cerrar();
             vistaLogin.iniciar();
+        });
+
+        // Boton para dar de baja
+        this.vista.getBtnBaja().addActionListener(e -> {
+            boolean eliminado = RepositorioUsuario.eliminarAlumnoPorDNI(dni);
+            if (eliminado) {
+                vista.cerrar();
+                vistaLogin.iniciar();
+                JOptionPane.showMessageDialog(null, "Te has dado de baja correctamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al dar de baja.");
+            }
         });
     }
 

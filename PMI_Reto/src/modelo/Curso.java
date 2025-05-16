@@ -9,11 +9,11 @@ public class Curso {
 	private String idioma;
 	private String dia;
 	private String horario;
-	private int dificultad;
+	private String dificultad;
 	private String programa;
 		
 	// Constructor
-	public Curso(int idCurso, String idioma, String dia, String horario, int dificultad, String programa) {
+	public Curso(int idCurso, String idioma, String dia, String horario, String dificultad, String programa) {
 		super();
 		this.idCurso = idCurso;
 		this.idioma = idioma;
@@ -55,11 +55,11 @@ public class Curso {
 		this.horario = horario;
 	}
 
-	public int getDificultad() {
+	public String getDificultad() {
 		return dificultad;
 	}
 
-	public void setDificultad(int dificultad) {
+	public void setDificultad(String dificultad) {
 		this.dificultad = dificultad;
 	}
 

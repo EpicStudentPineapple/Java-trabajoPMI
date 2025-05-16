@@ -82,5 +82,12 @@ public class VistaLogin extends JFrame {
 		
 		
 	}
+	public void iniciar() {
+	    this.setVisible(true);
+	}
+
+	public void cerrar() {
+	    this.dispose();
+	}
 
 }

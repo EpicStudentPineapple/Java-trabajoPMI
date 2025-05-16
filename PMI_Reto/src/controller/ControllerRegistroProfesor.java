@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import repositorios.RepositorioUsuario;
+import repositorios.RepositorioPersona;
 import view.VistaLogin;
 import view.VistaRegistro;
 import view.VistaRegistroProfesor;
@@ -46,7 +46,7 @@ public class ControllerRegistroProfesor {
         }
 
         try {
-            boolean registrado = RepositorioUsuario.registrarProfesor(
+            boolean registrado = RepositorioPersona.registrarProfesor(
                     vistaProfesor.getDni(),
                     vistaProfesor.getNombre(),
                     vistaProfesor.getApellido(),

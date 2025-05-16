@@ -2,22 +2,23 @@ package view;
 
 import javax.swing.JFrame;
 
-public class VistaProfesor extends JFrame{
+public class VistaProfesor extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	public VistaProfesor(String nombre) {
-		setTitle("Bienvenido "+nombre);
+		setTitle("Bienvenido " + nombre);
 		setSize(400, 200);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+
 	public void iniciar() {
-	    this.setVisible(true);
+		this.setVisible(true);
 	}
 
 	public void cerrar() {
-	    this.dispose();
+		this.dispose();
 	}
 
 }

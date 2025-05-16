@@ -10,67 +10,65 @@ import javax.swing.border.EmptyBorder;
 
 public class VistaAlumno extends JFrame {
 
-    private static final long serialVersionUID = 1L;
-    private JPanel contentPane;
-    private JButton btnCursos;
-    private JButton btnDatos;
-    private JButton btnCerrar;
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JButton btnCursos;
+	private JButton btnDatos;
+	private JButton btnCerrar;
 
-    private JButton btnBaja;
-    public VistaAlumno(String nombre) {
-        setTitle("Bienvenido " + nombre);
-        setSize(400, 300);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	private JButton btnBaja;
 
+	public VistaAlumno(String nombre) {
+		setTitle("Bienvenido " + nombre);
+		setSize(400, 300);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(20, 20, 20, 20));
-        contentPane.setLayout(new BorderLayout());
-        setContentPane(contentPane);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(20, 20, 20, 20));
+		contentPane.setLayout(new BorderLayout());
+		setContentPane(contentPane);
 
+		JPanel panelBotones = new JPanel();
+		panelBotones.setLayout(new GridLayout(4, 1, 10, 10));
 
-        JPanel panelBotones = new JPanel();
-        panelBotones.setLayout(new GridLayout(4, 1, 10, 10));
+		btnCursos = new JButton("Ver Cursos");
+		panelBotones.add(btnCursos);
 
-        btnCursos = new JButton("Ver Cursos");
-        panelBotones.add(btnCursos);
+		btnDatos = new JButton("Cambiar Datos");
+		panelBotones.add(btnDatos);
 
-        btnDatos = new JButton("Cambiar Datos");
-        panelBotones.add(btnDatos);
-     
-        
-        btnCerrar = new JButton("Cerrar Sesión");
-        panelBotones.add(btnCerrar);
-        
-        btnBaja = new JButton("Dar de baja");
-        panelBotones.add(btnBaja);
+		btnCerrar = new JButton("Cerrar Sesión");
+		panelBotones.add(btnCerrar);
 
+		btnBaja = new JButton("Dar de baja");
+		panelBotones.add(btnBaja);
 
-        contentPane.add(panelBotones, BorderLayout.CENTER);
-    }
+		contentPane.add(panelBotones, BorderLayout.CENTER);
+	}
 
+	public JButton getBtnCursos() {
+		return btnCursos;
+	}
 
-    public JButton getBtnCursos() {
-        return btnCursos;
-    }
+	public JButton getBtnDatos() {
+		return btnDatos;
+	}
 
-    public JButton getBtnDatos() {
-        return btnDatos;
-    }
-    public JButton getBtnCerrar() {
-        return btnCerrar;
-    }
-    public JButton getBtnBaja() {
-        return btnBaja;
-    }
-    public void iniciar() {
-        this.setVisible(true);
-    }
+	public JButton getBtnCerrar() {
+		return btnCerrar;
+	}
 
-    public void cerrar() {
-        this.dispose();
-    }
+	public JButton getBtnBaja() {
+		return btnBaja;
+	}
 
+	public void iniciar() {
+		this.setVisible(true);
+	}
+
+	public void cerrar() {
+		this.dispose();
+	}
 
 }

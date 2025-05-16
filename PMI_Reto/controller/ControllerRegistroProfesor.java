@@ -12,61 +12,60 @@ import view.VistaRegistroProfesor;
 
 public class ControllerRegistroProfesor {
 
-    private VistaRegistroProfesor vistaProfesor;
-    private VistaRegistro vistaRegistroPrincipal;
-    private VistaLogin vistaLogin;
+	private VistaRegistroProfesor vistaProfesor;
+	private VistaRegistro vistaRegistroPrincipal;
+	private VistaLogin vistaLogin;
 
-    public ControllerRegistroProfesor(VistaRegistroProfesor vistaProfesor, VistaRegistro vistaRegistroPrincipal, VistaLogin vistaLogin) {
-        this.vistaProfesor = vistaProfesor;
-        this.vistaRegistroPrincipal = vistaRegistroPrincipal;
-        this.vistaLogin = vistaLogin;
+	public ControllerRegistroProfesor(VistaRegistroProfesor vistaProfesor, VistaRegistro vistaRegistroPrincipal,
+			VistaLogin vistaLogin) {
+		this.vistaProfesor = vistaProfesor;
+		this.vistaRegistroPrincipal = vistaRegistroPrincipal;
+		this.vistaLogin = vistaLogin;
 
-        this.vistaProfesor.getBtnRegistrar().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                registrarProfesor();
-            }
-        });
+		this.vistaProfesor.getBtnRegistrar().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				registrarProfesor();
+			}
+		});
 
-        this.vistaProfesor.getBtnVolver().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                vistaRegistroPrincipal.setVisible(true);
-                vistaProfesor.dispose();
-            }
-        });
-    }
+		this.vistaProfesor.getBtnVolver().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				vistaRegistroPrincipal.setVisible(true);
+				vistaProfesor.dispose();
+			}
+		});
+	}
 
-    private void registrarProfesor() {
-        String nivelExperiencia = vistaProfesor.getComboNivelExperiencia().getSelectedItem().toString();
-        String especializacion = vistaProfesor.getTxtEspecializacionIdioma().getText().trim();
-        String dni = vistaProfesor.getDni();
+	private void registrarProfesor() {
+		String nivelExperiencia = vistaProfesor.getComboNivelExperiencia().getSelectedItem().toString();
+		String especializacion = vistaProfesor.getTxtEspecializacionIdioma().getText().trim();
+		String dni = vistaProfesor.getDni();
 
-        if (nivelExperiencia.isEmpty() || especializacion.isEmpty()) {
-            JOptionPane.showMessageDialog(vistaProfesor, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+		if (nivelExperiencia.isEmpty() || especializacion.isEmpty()) {
+			JOptionPane.showMessageDialog(vistaProfesor, "Todos los campos son obligatorios", "Error",
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 
-        if (RepositorioUsuario.existeUsuario(dni)) {
-            JOptionPane.showMessageDialog(vistaProfesor, "Ya existe un usuario con ese DNI", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+		if (RepositorioUsuario.existeUsuario(dni)) {
+			JOptionPane.showMessageDialog(vistaProfesor, "Ya existe un usuario con ese DNI", "Error",
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 
-        boolean registrado = RepositorioUsuario.registrarProfesor(
-                dni,
-                vistaProfesor.getNombre(),
-                vistaProfesor.getApellido(),
-                vistaProfesor.getContraseña(),
-                nivelExperiencia,
-                especializacion
-        );
+		boolean registrado = RepositorioUsuario.registrarProfesor(dni, vistaProfesor.getNombre(),
+				vistaProfesor.getApellido(), vistaProfesor.getContraseña(), nivelExperiencia, especializacion);
 
-        if (registrado) {
-            JOptionPane.showMessageDialog(vistaProfesor, "Profesor registrado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            vistaLogin.setVisible(true);
-            vistaProfesor.dispose();
-            vistaRegistroPrincipal.dispose();
-        } else {
-            JOptionPane.showMessageDialog(vistaProfesor, "No se pudo registrar al profesor", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+		if (registrado) {
+			JOptionPane.showMessageDialog(vistaProfesor, "Profesor registrado correctamente", "Éxito",
+					JOptionPane.INFORMATION_MESSAGE);
+			vistaLogin.setVisible(true);
+			vistaProfesor.dispose();
+			vistaRegistroPrincipal.dispose();
+		} else {
+			JOptionPane.showMessageDialog(vistaProfesor, "No se pudo registrar al profesor", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		}
+	}
 
 }

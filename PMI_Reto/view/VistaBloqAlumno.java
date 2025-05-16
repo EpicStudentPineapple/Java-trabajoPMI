@@ -6,76 +6,72 @@ import modelo.Alumno;
 import java.awt.*;
 
 public class VistaBloqAlumno extends JFrame {
-    private static final long serialVersionUID = 1L;
-    private JPanel contentPane;
-    private JTextField textoBusqueda;
-    private JButton botonBuscar;
-    private JButton botonVolver;
-    private JList<Alumno> listaAlumnos;
-    private DefaultListModel<Alumno> modeloLista;
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField textoBusqueda;
+	private JButton botonBuscar;
+	private JButton botonVolver;
+	private JList<Alumno> listaAlumnos;
+	private DefaultListModel<Alumno> modeloLista;
 
-    public VistaBloqAlumno() {
-        setTitle("Bloquear Alumno");
-        setSize(450, 300);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public VistaBloqAlumno() {
+		setTitle("Bloquear Alumno");
+		setSize(450, 300);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.setLayout(new BorderLayout());
-        setContentPane(contentPane);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout());
+		setContentPane(contentPane);
 
-        // Panel búsqueda
-        JPanel panelBusqueda = new JPanel();
-        JLabel etiquetaBusqueda = new JLabel("Buscar por nombre: ");
-        textoBusqueda = new JTextField(15);
-        botonBuscar = new JButton("Buscar");
-        panelBusqueda.add(etiquetaBusqueda);
-        panelBusqueda.add(textoBusqueda);
-        panelBusqueda.add(botonBuscar);
+		JPanel panelBusqueda = new JPanel();
+		JLabel etiquetaBusqueda = new JLabel("Buscar por nombre: ");
+		textoBusqueda = new JTextField(15);
+		botonBuscar = new JButton("Buscar");
+		panelBusqueda.add(etiquetaBusqueda);
+		panelBusqueda.add(textoBusqueda);
+		panelBusqueda.add(botonBuscar);
 
-        // Lista alumnos
-        modeloLista = new DefaultListModel<>();
-        listaAlumnos = new JList<>(modeloLista);
-        JScrollPane scrollPane = new JScrollPane(listaAlumnos);
+		modeloLista = new DefaultListModel<>();
+		listaAlumnos = new JList<>(modeloLista);
+		JScrollPane scrollPane = new JScrollPane(listaAlumnos);
 
-        // Botón volver
-        botonVolver = new JButton("Volver");
-        JPanel panelAbajo = new JPanel();
-        panelAbajo.add(botonVolver);
+		botonVolver = new JButton("Volver");
+		JPanel panelAbajo = new JPanel();
+		panelAbajo.add(botonVolver);
 
-        // Añadir al contentPane
-        contentPane.add(panelBusqueda, BorderLayout.NORTH);
-        contentPane.add(scrollPane, BorderLayout.CENTER);
-        contentPane.add(panelAbajo, BorderLayout.SOUTH);
-    }
+		contentPane.add(panelBusqueda, BorderLayout.NORTH);
+		contentPane.add(scrollPane, BorderLayout.CENTER);
+		contentPane.add(panelAbajo, BorderLayout.SOUTH);
+	}
 
-    public void iniciar() {
-        this.setVisible(true);
-    }
+	public void iniciar() {
+		this.setVisible(true);
+	}
 
-    public void cerrar() {
-        this.dispose();
-    }
+	public void cerrar() {
+		this.dispose();
+	}
 
-    // Getters
-    public JTextField getTextoBusqueda() {
-        return textoBusqueda;
-    }
 
-    public JButton getBotonBuscar() {
-        return botonBuscar;
-    }
+	public JTextField getTextoBusqueda() {
+		return textoBusqueda;
+	}
 
-    public JButton getBotonVolver() {
-        return botonVolver;
-    }
+	public JButton getBotonBuscar() {
+		return botonBuscar;
+	}
 
-    public JList<Alumno> getListaAlumnos() {
-        return listaAlumnos;
-    }
+	public JButton getBotonVolver() {
+		return botonVolver;
+	}
 
-    public DefaultListModel<Alumno> getModeloLista() {
-        return modeloLista;
-    }
+	public JList<Alumno> getListaAlumnos() {
+		return listaAlumnos;
+	}
+
+	public DefaultListModel<Alumno> getModeloLista() {
+		return modeloLista;
+	}
 }

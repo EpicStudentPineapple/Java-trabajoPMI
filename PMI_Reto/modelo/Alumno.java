@@ -2,59 +2,54 @@ package modelo;
 
 public class Alumno extends Persona {
 
-    // Atributos propios
-    private int nivelIdioma;
-    private String correo;
-    private boolean bloqueado;  
+	// Atributos propios
+	private int nivelIdioma;
+	private String correo;
+	private boolean bloqueado;
+	private int edad;
 
- 
-    public Alumno(String dni, String contraseña, String nombre, String apellido, String rol, int nivelIdioma, String correo) {
-        super(dni, contraseña, nombre, apellido, rol);
-        this.nivelIdioma = nivelIdioma;
-        this.correo = correo;
-    }
+	public Alumno(String dni, String contraseña, String nombre, String apellido, String rol, int nivelIdioma,
+			String correo) {
+		super(dni, contraseña, nombre, apellido, rol);
+		this.nivelIdioma = nivelIdioma;
+		this.correo = correo;
+	}
 
-  
-  
+	public boolean isBloqueado() {
+		return bloqueado;
+	}
 
-    // Getter y setter para bloqueado
-    public boolean isBloqueado() {
-        return bloqueado;
-    }
+	public void setBloqueado(boolean bloqueado) {
+		this.bloqueado = bloqueado;
+	}
 
-    public void setBloqueado(boolean bloqueado) {
-        this.bloqueado = bloqueado;
-    }
+	public int getNivelIdioma() {
+		return nivelIdioma;
+	}
 
-    // Métodos abstractos
-    @Override
-    public void imparteClase() {
-        // TODO Auto-generated method stub
-    }
+	public void setNivelIdioma(int nivelIdioma) {
+		this.nivelIdioma = nivelIdioma;
+	}
 
-    @Override
-    public void estaInscrito() {
-        // TODO Auto-generated method stub
-    }
+	public String getCorreo() {
+		return correo;
+	}
 
-    public int getNivelIdioma() {
-        return nivelIdioma;
-    }
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
 
-    public void setNivelIdioma(int nivelIdioma) {
-        this.nivelIdioma = nivelIdioma;
-    }
+	@Override
+	public String toString() {
+		return nombre + " " + apellido + " - DNI: " + dni;
+	}
 
-    public String getCorreo() {
-        return correo;
-    }
+	public int getEdad() {
+		return edad;
+	}
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
 
-    @Override
-    public String toString() {
-        return nombre + " " + apellido + " - DNI: " + dni;
-    }
 }

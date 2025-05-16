@@ -10,31 +10,31 @@ import javax.swing.border.EmptyBorder;
 
 public class VistaAdministrador extends JFrame {
 
-    private static final long serialVersionUID = 1L;
-    private JPanel contentPane;
-    private JButton btnAlumnos;
-    private JButton btnProfesores;
-    private JButton btnCerrar;
-    
-    public VistaAdministrador(String nombre) {
-        setTitle("Bienvenido Administrador " + nombre);
-        setSize(400, 200);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);
-        contentPane.setLayout(new GridLayout(3, 1, 5, 5));
-        
-        btnAlumnos = new JButton("Alumnos");
-        contentPane.add(btnAlumnos);
-        
-        btnProfesores = new JButton("Profesores");
-        contentPane.add(btnProfesores);
-        
-        btnCerrar = new JButton("Cerrar Sesión");
-        contentPane.add(btnCerrar);
-    }
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JButton btnAlumnos;
+	private JButton btnProfesores;
+	private JButton btnCerrar;
+
+	public VistaAdministrador(String nombre) {
+		setTitle("Bienvenido Administrador " + nombre);
+		setSize(400, 200);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(new GridLayout(3, 1, 5, 5));
+
+		btnAlumnos = new JButton("Alumnos");
+		contentPane.add(btnAlumnos);
+
+		btnProfesores = new JButton("Profesores");
+		contentPane.add(btnProfesores);
+
+		btnCerrar = new JButton("Cerrar Sesión");
+		contentPane.add(btnCerrar);
+	}
 
 	public JButton getBtnAlumnos() {
 		return btnAlumnos;
@@ -59,11 +59,12 @@ public class VistaAdministrador extends JFrame {
 	public void setBtnCerrar(JButton btnCerrar) {
 		this.btnCerrar = btnCerrar;
 	}
-	public void iniciar() {
-        this.setVisible(true);
-    }
 
-    public void cerrar() {
-        this.dispose();
-    }
+	public void iniciar() {
+		this.setVisible(true);
+	}
+
+	public void cerrar() {
+		this.dispose();
+	}
 }

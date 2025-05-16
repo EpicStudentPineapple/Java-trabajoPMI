@@ -1,24 +1,25 @@
 package controller;
 
-import modelo.Profesor;
-import repositorios.RepositorioAdministrador;
-import view.VistaAdminProfesor;
-import view.VistaBloqProfesor;
-import view.VistaDetalleProfesor;
-
-import javax.swing.DefaultListModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class ControllerBloqProfesor {
+import javax.swing.DefaultListModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
-	private VistaBloqProfesor vista;
+import modelo.Profesor;
+import repositorios.RepositorioAdministrador;
+import view.VistaAdminProfesor;
+import view.VistaEditarProfesor;
+import view.VistaEditarProfesorFormulario;
+
+public class ControllerEditarProfesor {
+
+	private VistaEditarProfesor vista;
 	private VistaAdminProfesor vistaAdminProfesor;
 
-	public ControllerBloqProfesor(VistaBloqProfesor vista, VistaAdminProfesor vistaAdminProfesor) {
+	public ControllerEditarProfesor(VistaEditarProfesor vista, VistaAdminProfesor vistaAdminProfesor) {
 		this.vista = vista;
 		this.vistaAdminProfesor = vistaAdminProfesor;
 
@@ -29,25 +30,27 @@ public class ControllerBloqProfesor {
 			}
 		});
 
-		this.vista.getBotonVolver().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				vista.cerrar();
-				vistaAdminProfesor.iniciar();
-			}
-		});
-
 		this.vista.getListaProfesores().addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				if (!e.getValueIsAdjusting()) {
 					Profesor seleccionado = vista.getListaProfesores().getSelectedValue();
 					if (seleccionado != null) {
-						VistaDetalleProfesor vistaDetalle = new VistaDetalleProfesor();
-						new ControllerDetalleProfesor(vistaDetalle, seleccionado, ControllerBloqProfesor.this, vista);
-						vistaDetalle.iniciar();
+						VistaEditarProfesorFormulario vistaFormulario = new VistaEditarProfesorFormulario();
+						ControllerEditarProfesorFormulario controllerFormulario = new ControllerEditarProfesorFormulario(
+								vistaFormulario, ControllerEditarProfesor.this);
+						controllerFormulario.iniciar(seleccionado);
+						vista.cerrar();
 					}
 				}
+			}
+		});
+
+		this.vista.getBotonVolver().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				vista.cerrar();
+				vistaAdminProfesor.iniciar();
 			}
 		});
 	}

@@ -1,11 +1,12 @@
 package view;
 
+import java.awt.BorderLayout;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import modelo.Profesor;
-import java.awt.*;
 
-public class VistaBloqProfesor extends JFrame {
+public class VistaEditarProfesor extends JFrame {
+
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textoBusqueda;
@@ -14,8 +15,8 @@ public class VistaBloqProfesor extends JFrame {
 	private JList<Profesor> listaProfesores;
 	private DefaultListModel<Profesor> modeloLista;
 
-	public VistaBloqProfesor() {
-		setTitle("Bloquear Profesor");
+	public VistaEditarProfesor() {
+		setTitle("Editar Profesor");
 		setSize(450, 300);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,11 +48,11 @@ public class VistaBloqProfesor extends JFrame {
 	}
 
 	public void iniciar() {
-		this.setVisible(true);
+		setVisible(true);
 	}
 
 	public void cerrar() {
-		this.dispose();
+		dispose();
 	}
 
 	public JTextField getTextoBusqueda() {

@@ -39,6 +39,6 @@ public class ControllerDetalles {
 	}
 
 	public void iniciar() {
-		vistaDetalles.setVisible(true); 
+		vistaDetalles.setVisible(true);
 	}
 }

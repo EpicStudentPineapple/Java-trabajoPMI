@@ -5,7 +5,8 @@ public class Profesor extends Persona {
 	// Atributos propios
 	private String idioma;
 	private String experiencia;
-	 private boolean bloqueado;
+	private String especializacionIdioma;
+	private boolean bloqueado;
 
 	public Profesor(String dni, String contraseña, String nombre, String apellido, String rol, String idioma,
 			String experiencia) {
@@ -31,28 +32,25 @@ public class Profesor extends Persona {
 		this.experiencia = experiencia;
 	}
 
-	   // Getter y setter para bloqueado
-    public boolean isBloqueado() {
-        return bloqueado;
-    }
+	// Getter y setter para bloqueado
+	public boolean isBloqueado() {
+		return bloqueado;
+	}
 
-    public void setBloqueado(boolean bloqueado) {
-        this.bloqueado = bloqueado;
-    }
+	public void setBloqueado(boolean bloqueado) {
+		this.bloqueado = bloqueado;
+	}
 
-	@Override
-	public void imparteClase() {
-		// TODO Auto-generated method stub
-		
+	public String getEspecializacionIdioma() {
+		return especializacionIdioma;
+	}
+
+	public void setEspecializacionIdioma(String especializacionIdioma) {
+		this.especializacionIdioma = especializacionIdioma;
 	}
 
 	@Override
-	public void estaInscrito() {
-		// TODO Auto-generated method stub
-		
+	public String toString() {
+		return nombre + " " + apellido + " - DNI: " + dni;
 	}
-    @Override
-    public String toString() {
-        return nombre + " " + apellido + " - DNI: " + dni;
-    }
 }

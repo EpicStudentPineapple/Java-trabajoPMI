@@ -8,8 +8,15 @@ import modelo.Profesor;
 
 public class VistaDetalleProfesor extends JFrame {
 
-    private JLabel lblDni, lblNombre, lblApellido, lblIdioma, lblExperiencia, lblBloqueado;
+    private JLabel etiquetaDni;
+    private JLabel etiquetaNombre;
+    private JLabel etiquetaApellido;
+    private JLabel etiquetaIdioma;
+    private JLabel etiquetaExperiencia;
+    private JLabel etiquetaBloqueado;
+
     private JButton btnBloquear;
+    private JButton btnVolver;
 
     public VistaDetalleProfesor() {
         setTitle("Detalle Profesor");
@@ -17,38 +24,52 @@ public class VistaDetalleProfesor extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        JPanel panel = new JPanel(new GridLayout(7, 1, 5, 5));
+        JPanel panel = new JPanel(new GridLayout(8, 1, 5, 5));
         panel.setBorder(new EmptyBorder(15, 15, 15, 15));
 
-        lblDni = new JLabel();
-        lblNombre = new JLabel();
-        lblApellido = new JLabel();
-        lblIdioma = new JLabel();
-        lblExperiencia = new JLabel();
-        lblBloqueado = new JLabel();
+        etiquetaDni = new JLabel();
+        etiquetaNombre = new JLabel();
+        etiquetaApellido = new JLabel();
+        etiquetaIdioma = new JLabel();
+        etiquetaExperiencia = new JLabel();
+        etiquetaBloqueado = new JLabel();
         btnBloquear = new JButton("Bloquear");
+        btnVolver = new JButton("Volver");
 
-        panel.add(lblDni);
-        panel.add(lblNombre);
-        panel.add(lblApellido);
-        panel.add(lblIdioma);
-        panel.add(lblExperiencia);
-        panel.add(lblBloqueado);
+        panel.add(etiquetaDni);
+        panel.add(etiquetaNombre);
+        panel.add(etiquetaApellido);
+        panel.add(etiquetaIdioma);
+        panel.add(etiquetaExperiencia);
+        panel.add(etiquetaBloqueado);
         panel.add(btnBloquear);
+        panel.add(btnVolver);
 
         add(panel);
     }
 
-    public void mostrarDatosProfesor(Profesor p) {
-        lblDni.setText("DNI: " + p.getDni());
-        lblNombre.setText("Nombre: " + p.getNombre());
-        lblApellido.setText("Apellido: " + p.getApellido());
-        lblIdioma.setText("Idioma: " + p.getIdioma());
-        lblExperiencia.setText("Experiencia: " + p.getExperiencia());
-        lblBloqueado.setText("Bloqueado: " + (p.isBloqueado() ? "Sí" : "No"));
+    public void mostrarDatosProfesor(Profesor profesor) {
+        etiquetaDni.setText("DNI: " + profesor.getDni());
+        etiquetaNombre.setText("Nombre: " + profesor.getNombre());
+        etiquetaApellido.setText("Apellido: " + profesor.getApellido());
+        etiquetaIdioma.setText("Idioma: " + profesor.getIdioma());
+        etiquetaExperiencia.setText("Experiencia: " + profesor.getExperiencia());
+        etiquetaBloqueado.setText("Bloqueado: " + (profesor.isBloqueado() ? "Sí" : "No"));
     }
 
     public JButton getBtnBloquear() {
         return btnBloquear;
+    }
+
+    public JButton getBtnVolver() {
+        return btnVolver;
+    }
+
+    public void iniciar() {
+        setVisible(true);
+    }
+
+    public void cerrar() {
+        dispose();
     }
 }

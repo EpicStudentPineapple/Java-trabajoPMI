@@ -1,24 +1,25 @@
 package controller;
 
-import modelo.Profesor;
-import repositorios.RepositorioAdministrador;
-import view.VistaAdminProfesor;
-import view.VistaBloqProfesor;
-import view.VistaDetalleProfesor;
-
-import javax.swing.DefaultListModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class ControllerBloqProfesor {
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
-	private VistaBloqProfesor vista;
+import modelo.Profesor;
+import repositorios.RepositorioAdministrador;
+import view.VistaAdminProfesor;
+import view.VistaEliminarProfesor;
+
+public class ControllerEliminarProfesor {
+
+	private VistaEliminarProfesor vista;
 	private VistaAdminProfesor vistaAdminProfesor;
 
-	public ControllerBloqProfesor(VistaBloqProfesor vista, VistaAdminProfesor vistaAdminProfesor) {
+	public ControllerEliminarProfesor(VistaEliminarProfesor vista, VistaAdminProfesor vistaAdminProfesor) {
 		this.vista = vista;
 		this.vistaAdminProfesor = vistaAdminProfesor;
 
@@ -29,25 +30,38 @@ public class ControllerBloqProfesor {
 			}
 		});
 
-		this.vista.getBotonVolver().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				vista.cerrar();
-				vistaAdminProfesor.iniciar();
-			}
-		});
-
 		this.vista.getListaProfesores().addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				if (!e.getValueIsAdjusting()) {
 					Profesor seleccionado = vista.getListaProfesores().getSelectedValue();
 					if (seleccionado != null) {
-						VistaDetalleProfesor vistaDetalle = new VistaDetalleProfesor();
-						new ControllerDetalleProfesor(vistaDetalle, seleccionado, ControllerBloqProfesor.this, vista);
-						vistaDetalle.iniciar();
+						int respuesta = JOptionPane.showOptionDialog(vista,
+								"¿Quieres eliminar al profesor \"" + seleccionado.getNombre() + "\" con DNI \""
+										+ seleccionado.getDni() + "\"?",
+								"Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+								new Object[] { "Sí", "No" }, "No");
+
+						if (respuesta == JOptionPane.YES_OPTION) {
+							boolean eliminado = RepositorioAdministrador.eliminarProfesor(seleccionado.getDni());
+							if (eliminado) {
+								recargarLista();
+								JOptionPane.showMessageDialog(vista, "Profesor eliminado correctamente");
+							} else {
+								JOptionPane.showMessageDialog(vista, "Error al eliminar al profesor", "Error",
+										JOptionPane.ERROR_MESSAGE);
+							}
+						}
 					}
 				}
+			}
+		});
+
+		this.vista.getBotonVolver().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				vista.cerrar();
+				vistaAdminProfesor.iniciar();
 			}
 		});
 	}

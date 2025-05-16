@@ -1,21 +1,31 @@
 package view;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import modelo.Profesor;
-import java.awt.*;
+import java.awt.BorderLayout;
 
-public class VistaDesbloqProfesor extends JFrame {
-    private static final long serialVersionUID = 1L;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import modelo.Alumno;
+
+public class VistaEditarAlumno extends JFrame{
+
+	private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JTextField textoBusqueda;
     private JButton botonBuscar;
     private JButton botonVolver;
-    private JList<Profesor> listaProfesores;
-    private DefaultListModel<Profesor> modeloLista;
+    private JList<Alumno> listaAlumnos;
+    private DefaultListModel<Alumno> modeloLista;
 
-    public VistaDesbloqProfesor() {
-        setTitle("Desbloquear Profesor");
+    public VistaEditarAlumno() {
+        setTitle("Editar Alumno");
         setSize(450, 300);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,7 +35,7 @@ public class VistaDesbloqProfesor extends JFrame {
         contentPane.setLayout(new BorderLayout());
         setContentPane(contentPane);
 
-        
+
         JPanel panelBusqueda = new JPanel();
         JLabel etiquetaBusqueda = new JLabel("Buscar por nombre: ");
         textoBusqueda = new JTextField(15);
@@ -34,16 +44,17 @@ public class VistaDesbloqProfesor extends JFrame {
         panelBusqueda.add(textoBusqueda);
         panelBusqueda.add(botonBuscar);
 
-      
-        modeloLista = new DefaultListModel<>();
-        listaProfesores = new JList<>(modeloLista);
-        JScrollPane scrollPane = new JScrollPane(listaProfesores);
-
        
+        modeloLista = new DefaultListModel<>();
+        listaAlumnos = new JList<>(modeloLista);
+        JScrollPane scrollPane = new JScrollPane(listaAlumnos);
+
+      
         botonVolver = new JButton("Volver");
         JPanel panelAbajo = new JPanel();
         panelAbajo.add(botonVolver);
 
+    
         contentPane.add(panelBusqueda, BorderLayout.NORTH);
         contentPane.add(scrollPane, BorderLayout.CENTER);
         contentPane.add(panelAbajo, BorderLayout.SOUTH);
@@ -57,7 +68,7 @@ public class VistaDesbloqProfesor extends JFrame {
         this.dispose();
     }
 
-
+    
     public JTextField getTextoBusqueda() {
         return textoBusqueda;
     }
@@ -70,11 +81,11 @@ public class VistaDesbloqProfesor extends JFrame {
         return botonVolver;
     }
 
-    public JList<Profesor> getListaProfesores() {
-        return listaProfesores;
+    public JList<Alumno> getListaAlumnos() {
+        return listaAlumnos;
     }
 
-    public DefaultListModel<Profesor> getModeloLista() {
+    public DefaultListModel<Alumno> getModeloLista() {
         return modeloLista;
     }
 }

@@ -5,21 +5,22 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import modelo.Alumno;
 import repositorios.RepositorioAdministrador;
 import view.VistaAdminAlumno;
-import view.VistaBloqAlumno;
 import view.VistaDetalleAlumno;
+import view.VistaEliminarAlumno;
 
-public class ControllerBloqAlumno {
+public class ControllerEliminarAlumno {
 
-	private VistaBloqAlumno vista;
+	private VistaEliminarAlumno vista;
 	private VistaAdminAlumno vistaAdminAlumno;
 
-	public ControllerBloqAlumno(VistaBloqAlumno vista, VistaAdminAlumno vistaAdminAlumno) {
+	public ControllerEliminarAlumno(VistaEliminarAlumno vista, VistaAdminAlumno vistaAdminAlumno) {
 		this.vista = vista;
 		this.vistaAdminAlumno = vistaAdminAlumno;
 
@@ -37,10 +38,22 @@ public class ControllerBloqAlumno {
 				if (!e.getValueIsAdjusting()) {
 					Alumno seleccionado = vista.getListaAlumnos().getSelectedValue();
 					if (seleccionado != null) {
-						VistaDetalleAlumno vistaDetalle = new VistaDetalleAlumno();
-						new ControllerDetalleAlumno(vistaDetalle, seleccionado, ControllerBloqAlumno.this, vista);
-						vistaDetalle.iniciar();
-						;
+						int respuesta = JOptionPane.showOptionDialog(vista,
+								"¿Quieres eliminar al alumno \"" + seleccionado.getNombre() + "\" con DNI \""
+										+ seleccionado.getDni() + "\"?",
+								"Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+								new Object[] { "Sí", "No" }, "No");
+
+						if (respuesta == JOptionPane.YES_OPTION) {
+							boolean eliminado = RepositorioAdministrador.eliminarAlumno(seleccionado.getDni());
+							if (eliminado) {
+								recargarLista();
+								JOptionPane.showMessageDialog(vista, "Alumno eliminado correctamente");
+							} else {
+								JOptionPane.showMessageDialog(vista, "Error al eliminar al alumno", "Error",
+										JOptionPane.ERROR_MESSAGE);
+							}
+						}
 					}
 				}
 			}
@@ -59,7 +72,6 @@ public class ControllerBloqAlumno {
 		cargarAlumnosInicial();
 	}
 
-	// Metodo para cargar alumnos
 	private void cargarAlumnosInicial() {
 		ArrayList<Alumno> todos = RepositorioAdministrador.buscarAlumnosPorNombre("");
 		DefaultListModel<Alumno> modelo = vista.getModeloLista();
@@ -69,7 +81,6 @@ public class ControllerBloqAlumno {
 		}
 	}
 
-	// Buscar por nombre
 	private void buscarAlumnos() {
 		String nombre = vista.getTextoBusqueda().getText().trim();
 		ArrayList<Alumno> encontrados = RepositorioAdministrador.buscarAlumnosPorNombre(nombre);

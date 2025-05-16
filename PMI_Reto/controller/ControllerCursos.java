@@ -28,7 +28,7 @@ public class ControllerCursos {
 			modeloLista.addElement(curso);
 		}
 
-		// Accion seleccionar curso
+		// Seleccionar curso
 		this.vista.getListaCursos().addListSelectionListener(e -> {
 			if (!e.getValueIsAdjusting()) {
 				Curso seleccionado = vista.getListaCursos().getSelectedValue();
@@ -43,27 +43,28 @@ public class ControllerCursos {
 			}
 		});
 		this.vista.getBtnBuscar().addActionListener(new ActionListener() {
-		    @Override
-		    public void actionPerformed(ActionEvent e) {
-		        String textoBusqueda = vista.getTextoBusqueda().getText().trim();
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String textoBusqueda = vista.getTextoBusqueda().getText().trim();
 
-		        DefaultListModel<Curso> modeloLista = vista.getModeloLista();
-		        modeloLista.clear();
+				DefaultListModel<Curso> modeloLista = vista.getModeloLista();
+				modeloLista.clear();
 
-		        if (textoBusqueda.isEmpty()) {
-		            for (Curso curso : RepositorioCursos.obtenerCursos()) {
-		                modeloLista.addElement(curso);
-		            }
-		        } else {
-		            for (Curso curso : RepositorioCursos.buscarCursosPorIdioma(textoBusqueda)) {
-		                modeloLista.addElement(curso);
-		            }
+				if (textoBusqueda.isEmpty()) {
+					for (Curso curso : RepositorioCursos.obtenerCursos()) {
+						modeloLista.addElement(curso);
+					}
+				} else {
+					for (Curso curso : RepositorioCursos.buscarCursosPorIdioma(textoBusqueda)) {
+						modeloLista.addElement(curso);
+					}
 
-		            if (modeloLista.isEmpty()) {
-		                JOptionPane.showMessageDialog(vista, "No se encontraron resultados", "Sin resultados", JOptionPane.INFORMATION_MESSAGE);
-		            }
-		        }
-		    }
+					if (modeloLista.isEmpty()) {
+						JOptionPane.showMessageDialog(vista, "No se encontraron resultados", "Sin resultados",
+								JOptionPane.INFORMATION_MESSAGE);
+					}
+				}
+			}
 		});
 
 		// Boton Volver
@@ -77,6 +78,6 @@ public class ControllerCursos {
 	}
 
 	public void iniciar() {
-		vista.setVisible(true); 
+		vista.setVisible(true);
 	}
 }

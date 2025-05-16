@@ -11,19 +11,18 @@ import javax.swing.event.ListSelectionListener;
 import modelo.Alumno;
 import repositorios.RepositorioAdministrador;
 import view.VistaAdminAlumno;
-import view.VistaBloqAlumno;
-import view.VistaDetalleAlumno;
+import view.VistaEditarAlumno;
+import view.VistaEditarAlumnoFormulario;
 
-public class ControllerBloqAlumno {
+public class ControllerEditarAlumno {
 
-	private VistaBloqAlumno vista;
+	private VistaEditarAlumno vista;
 	private VistaAdminAlumno vistaAdminAlumno;
 
-	public ControllerBloqAlumno(VistaBloqAlumno vista, VistaAdminAlumno vistaAdminAlumno) {
+	public ControllerEditarAlumno(VistaEditarAlumno vista, VistaAdminAlumno vistaAdminAlumno) {
 		this.vista = vista;
 		this.vistaAdminAlumno = vistaAdminAlumno;
 
-		// Boton Buscar
 		this.vista.getBotonBuscar().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -37,14 +36,16 @@ public class ControllerBloqAlumno {
 				if (!e.getValueIsAdjusting()) {
 					Alumno seleccionado = vista.getListaAlumnos().getSelectedValue();
 					if (seleccionado != null) {
-						VistaDetalleAlumno vistaDetalle = new VistaDetalleAlumno();
-						new ControllerDetalleAlumno(vistaDetalle, seleccionado, ControllerBloqAlumno.this, vista);
-						vistaDetalle.iniciar();
-						;
+						VistaEditarAlumnoFormulario vistaFormulario = new VistaEditarAlumnoFormulario();
+						ControllerEditarAlumnoFormulario controllerFormulario = new ControllerEditarAlumnoFormulario(
+								vistaFormulario, ControllerEditarAlumno.this);
+						controllerFormulario.iniciar(seleccionado);
+						vista.cerrar();
 					}
 				}
 			}
 		});
+
 		this.vista.getBotonVolver().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -59,7 +60,6 @@ public class ControllerBloqAlumno {
 		cargarAlumnosInicial();
 	}
 
-	// Metodo para cargar alumnos
 	private void cargarAlumnosInicial() {
 		ArrayList<Alumno> todos = RepositorioAdministrador.buscarAlumnosPorNombre("");
 		DefaultListModel<Alumno> modelo = vista.getModeloLista();
@@ -69,7 +69,6 @@ public class ControllerBloqAlumno {
 		}
 	}
 
-	// Buscar por nombre
 	private void buscarAlumnos() {
 		String nombre = vista.getTextoBusqueda().getText().trim();
 		ArrayList<Alumno> encontrados = RepositorioAdministrador.buscarAlumnosPorNombre(nombre);

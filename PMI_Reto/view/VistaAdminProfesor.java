@@ -15,8 +15,8 @@ public class VistaAdminProfesor extends JFrame {
 	private JButton btnEliminar;
 	private static final long serialVersionUID = 1L;
 
-    public VistaAdminProfesor() {
-    	setTitle("Profesores ");
+	public VistaAdminProfesor() {
+		setTitle("Profesores ");
 		setSize(400, 200);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -100,4 +100,3 @@ public class VistaAdminProfesor extends JFrame {
 		this.dispose();
 	}
 }
-

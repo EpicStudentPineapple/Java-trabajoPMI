@@ -1,21 +1,30 @@
 package view;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import modelo.Profesor;
-import java.awt.*;
+import java.awt.BorderLayout;
 
-public class VistaBloqProfesor extends JFrame {
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import modelo.Alumno;
+
+public class VistaEliminarAlumno extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textoBusqueda;
 	private JButton botonBuscar;
 	private JButton botonVolver;
-	private JList<Profesor> listaProfesores;
-	private DefaultListModel<Profesor> modeloLista;
+	private JList<Alumno> listaAlumnos;
+	private DefaultListModel<Alumno> modeloLista;
 
-	public VistaBloqProfesor() {
-		setTitle("Bloquear Profesor");
+	public VistaEliminarAlumno() {
+		setTitle("Eliminar Alumno");
 		setSize(450, 300);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,8 +43,8 @@ public class VistaBloqProfesor extends JFrame {
 		panelBusqueda.add(botonBuscar);
 
 		modeloLista = new DefaultListModel<>();
-		listaProfesores = new JList<>(modeloLista);
-		JScrollPane scrollPane = new JScrollPane(listaProfesores);
+		listaAlumnos = new JList<>(modeloLista);
+		JScrollPane scrollPane = new JScrollPane(listaAlumnos);
 
 		botonVolver = new JButton("Volver");
 		JPanel panelAbajo = new JPanel();
@@ -66,11 +75,11 @@ public class VistaBloqProfesor extends JFrame {
 		return botonVolver;
 	}
 
-	public JList<Profesor> getListaProfesores() {
-		return listaProfesores;
+	public JList<Alumno> getListaAlumnos() {
+		return listaAlumnos;
 	}
 
-	public DefaultListModel<Profesor> getModeloLista() {
+	public DefaultListModel<Alumno> getModeloLista() {
 		return modeloLista;
 	}
 }

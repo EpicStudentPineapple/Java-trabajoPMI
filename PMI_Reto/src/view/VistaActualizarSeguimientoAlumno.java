@@ -16,7 +16,7 @@ public class VistaActualizarSeguimientoAlumno extends JFrame {
 
         add(new JLabel("DNI:"));
         txtDni = new JTextField();
-        txtDni.setEditable(false); // No editable
+        txtDni.setEditable(false); // No se puede editar
         add(txtDni);
 
         add(new JLabel("ID Curso:"));

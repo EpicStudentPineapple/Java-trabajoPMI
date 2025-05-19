@@ -1,7 +1,5 @@
 package modelo;
 
-import java.sql.Date;
-
 public class Curso {
 
 	// Atributos
@@ -23,6 +21,22 @@ public class Curso {
 		this.programa = programa;
 	}
 	
+	
+	public Curso(String idioma, String dia, String horario, String dificultad, String programa) {
+		super();
+		this.idioma = idioma;
+		this.dia = dia;
+		this.horario = horario;
+		this.dificultad = dificultad;
+		this.programa = programa;
+	}
+
+
+	public Curso(String idioma2, String dificultad2) {
+		this.idioma = idioma2;
+		this.dificultad = dificultad2;
+	}
+
 	// Getters & Setters
 	public int getIdCurso() {
 		return idCurso;
@@ -70,12 +84,11 @@ public class Curso {
 	public void setPrograma(String programa) {
 		this.programa = programa;
 	}
-
 	@Override
 	public String toString() {
-		return "Curso [idCurso=" + idCurso + ", idioma=" + idioma + ", dia=" + dia + ", horario=" + horario
-				+ ", dificultad=" + dificultad + ", programa=" + programa + "]";
+	    return idioma + " - " + dificultad; 
 	}
+
 
 
 }

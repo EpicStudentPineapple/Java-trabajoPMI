@@ -7,7 +7,7 @@ import javax.swing.event.DocumentListener;
 import java.util.ArrayList;
 
 import modelo.Curso;
-import repositorios.RepositorioCurso;
+import repositorios.RepositorioCursos;
 import view.VistaCursoProfesor;
 import view.VistaNuevoCurso;
 import view.VistaProfesor;
@@ -38,7 +38,7 @@ public class ControllerCursoProfesor {
                         "Confirmar eliminación",
                         JOptionPane.YES_NO_OPTION);
                 if (confirmacion == JOptionPane.YES_OPTION) {
-                    RepositorioCurso.eliminarCursos(cursoSeleccionado.getIdCurso());
+                    RepositorioCursos.eliminarCursos(cursoSeleccionado.getIdCurso());
                     refrescarCursos();
                 }
             } else {
@@ -86,14 +86,14 @@ public class ControllerCursoProfesor {
     }
 
     public void iniciar() {
-        todosLosCursos = RepositorioCurso.obtenerCursos();  // Guardamos la lista completa
+        todosLosCursos = RepositorioCursos.obtenerCursos();  // Guardamos la lista completa
         vcp.setCursos(todosLosCursos);  // Mostramos lista completa
         vcp.iniciar();
     }
 
     // Método para refrescar lista de cursos
     public void refrescarCursos() {
-        todosLosCursos = RepositorioCurso.obtenerCursos();
+        todosLosCursos = RepositorioCursos.obtenerCursos();
         vcp.setCursos(todosLosCursos);
     }
 }

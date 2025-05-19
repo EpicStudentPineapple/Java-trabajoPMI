@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 import modelo.Curso;
 
-public class RepositorioCurso {
+public class RepositorioCursos {
 
 	// Metodo para insertar nuevos cursos
 	public static void nuevoCurso(String idioma, String dia, String horario, String dificultad, String programa) {

@@ -21,7 +21,7 @@ public class ControllerSeguimientoAlumno {
         this.vista = vista;
         this.vistaAnterior = vistaAnterior;
 
-        // Botón Volver
+        // Boton volver
         this.vista.getBtnVolver().addActionListener(e -> {
             vista.dispose();
             vistaAnterior.setVisible(true);
@@ -77,7 +77,7 @@ public class ControllerSeguimientoAlumno {
             }
         });
 
-        // Filtrado en tiempo real
+        // Busqueda en tiempo real
         vista.getTextBuscador().getDocument().addDocumentListener(new DocumentListener() {
             public void insertUpdate(DocumentEvent e) {
                 filtrarSeguimientos();
@@ -107,6 +107,6 @@ public class ControllerSeguimientoAlumno {
 
     public void iniciar() {
         vista.setVisible(true);
-        vista.actualizarSeguimientos(); // Cargar los seguimientos al inicio
+        vista.actualizarSeguimientos();
     }
 }

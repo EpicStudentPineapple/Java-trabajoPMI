@@ -2,7 +2,7 @@ package controller;
 
 import javax.swing.JOptionPane;
 
-import repositorios.RepositorioCurso;
+import repositorios.RepositorioCursos;
 import view.VistaNuevoCurso;
 
 public class ControllerNuevoCurso {
@@ -26,7 +26,7 @@ public class ControllerNuevoCurso {
             if (!idioma.isEmpty() && !dia.isEmpty() && !horario.isEmpty()
                 && !dificultad.isEmpty() && !programa.isEmpty()) {
 
-                RepositorioCurso.nuevoCurso(idioma, dia, horario, dificultad, programa);
+                RepositorioCursos.nuevoCurso(idioma, dia, horario, dificultad, programa);
                 vnc.limpiarCampos();
 
                 // Refrescar lista de cursos en la ventana principal

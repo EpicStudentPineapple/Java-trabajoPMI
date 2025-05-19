@@ -17,7 +17,7 @@ public class ControllerActualizarSeguimientoAlumno {
         this.vistaAnterior = vistaAnterior;
         this.seguimiento = seguimiento;
 
-        // Rellenar campos con datos actuales
+        // Aqui rellenamos los campos actuales
         vista.getTxtDni().setText(seguimiento.getDni());
         vista.getTxtIdCurso().setText(String.valueOf(seguimiento.getIdCurso()));
         vista.getTxtNivel().setText(seguimiento.getNivelIdioma());
@@ -25,13 +25,13 @@ public class ControllerActualizarSeguimientoAlumno {
         vista.getTxtParticipacion().setText(String.valueOf(seguimiento.getParticipacion()));
         vista.getTxtRendimiento().setText(String.valueOf(seguimiento.getRendimiento()));
 
-        // Acción para volver
+        // Accrion para el boton volver
         vista.getBtnVolver().addActionListener(e -> {
             vista.dispose();
             vistaAnterior.setVisible(true);
         });
 
-        // Acción para actualizar
+        // Aqui ponemos solo los campos activos que queremos modificar
         vista.getBtnActualizar().addActionListener(e -> {
             try {
                 int nuevaAsistencia = Integer.parseInt(vista.getTxtAsistencia().getText());

@@ -1,7 +1,7 @@
 package controller;
 
 import modelo.Curso;
-import repositorios.RepositorioCurso;
+import repositorios.RepositorioCursos;
 import view.VistaDetalles;
 
 import javax.swing.*;
@@ -30,7 +30,7 @@ public class ControllerDetalles {
 			public void actionPerformed(ActionEvent e) {
 				Curso curso = vistaDetalles.getCurso();
 
-				if (RepositorioCurso.inscribirAlumnoEnCurso(dniAlumno, curso.getIdCurso())) {
+				if (RepositorioCursos.inscribirAlumnoEnCurso(dniAlumno, curso.getIdCurso())) {
 					JOptionPane.showMessageDialog(null, "Inscripción realizada con éxito.");
 				}
 

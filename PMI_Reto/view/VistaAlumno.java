@@ -50,7 +50,7 @@ public class VistaAlumno extends JFrame {
         contentPane.add(panelBotones, BorderLayout.CENTER);
     }
 
-    // Getters de los botones
+
     public JButton getBtnCursos() {
         return btnCursos;
     }
@@ -71,4 +71,6 @@ public class VistaAlumno extends JFrame {
     public void cerrar() {
         this.dispose();
     }
+
+
 }

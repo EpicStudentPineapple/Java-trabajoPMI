@@ -43,7 +43,7 @@ public class VistaDetalleProfesor extends JFrame {
         lblDni.setText("DNI: " + p.getDni());
         lblNombre.setText("Nombre: " + p.getNombre());
         lblApellido.setText("Apellido: " + p.getApellido());
-        lblIdioma.setText("Idioma: " + p.getIdioma());
+        lblIdioma.setText("Idioma: " + p.getEspecializacionIdioma());
         lblExperiencia.setText("Experiencia: " + p.getExperiencia());
         lblBloqueado.setText("Bloqueado: " + (p.isBloqueado() ? "Sí" : "No"));
     }

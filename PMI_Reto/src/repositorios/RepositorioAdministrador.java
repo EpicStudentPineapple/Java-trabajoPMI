@@ -359,7 +359,7 @@ public class RepositorioAdministrador {
 			String sqlProfesor = "UPDATE Profesor SET nivelExperiencia = ?, especializacionIdioma = ? WHERE dni = ?";
 			stmtProfesor = conn.prepareStatement(sqlProfesor);
 			stmtProfesor.setString(1, profesor.getExperiencia());
-			stmtProfesor.setString(2, profesor.getIdioma());
+			stmtProfesor.setString(2, profesor.getEspecializacionIdioma());
 			stmtProfesor.setString(3, profesor.getDni());
 			stmtProfesor.executeUpdate();
 

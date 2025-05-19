@@ -3,26 +3,20 @@ package modelo;
 public class Profesor extends Persona {
 
 	// Atributos propios
-	private String idioma;
+	
 	private String experiencia;
 	private String especializacionIdioma;
 	private boolean bloqueado;
 
-	public Profesor(String dni, String contraseña, String nombre, String apellido, String rol, String idioma,
+	public Profesor(String dni, String contraseña, String nombre, String apellido, String rol, String especializacionIdioma,
 			String experiencia) {
 		super(dni, contraseña, nombre, apellido, rol);
-		this.idioma = idioma;
+		this.especializacionIdioma = especializacionIdioma;
 		this.experiencia = experiencia;
 	}
 
 	// Getters & Setters
-	public String getIdioma() {
-		return idioma;
-	}
 
-	public void setIdioma(String idioma) {
-		this.idioma = idioma;
-	}
 
 	public String getExperiencia() {
 		return experiencia;

@@ -22,10 +22,11 @@ public class ControllerDetalleAlumno {
 
         vista.mostrarDatosAlumno(alumno);
 
+        // Boton bloquear
         vista.getBtnBloquear().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (alumno.isBloqueado()) {
+                if (alumno.getBloqueado()) {
                     JOptionPane.showMessageDialog(vista, "Este alumno ya está bloqueado.");
                     return;
                 }

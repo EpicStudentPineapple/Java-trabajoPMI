@@ -10,7 +10,7 @@ public class Curso {
 	private String dificultad;
 	private String programa;
 		
-	// Constructor
+	// Constructor con alumno
 	public Curso(int idCurso, String idioma, String dia, String horario, String dificultad, String programa) {
 		super();
 		this.idCurso = idCurso;
@@ -21,7 +21,7 @@ public class Curso {
 		this.programa = programa;
 	}
 	
-	
+	// Constructor propio
 	public Curso(String idioma, String dia, String horario, String dificultad, String programa) {
 		super();
 		this.idioma = idioma;
@@ -31,7 +31,7 @@ public class Curso {
 		this.programa = programa;
 	}
 
-
+	// Constructor con idioma y dificultad
 	public Curso(String idioma2, String dificultad2) {
 		this.idioma = idioma2;
 		this.dificultad = dificultad2;
@@ -84,6 +84,8 @@ public class Curso {
 	public void setPrograma(String programa) {
 		this.programa = programa;
 	}
+	
+	// toString 
 	@Override
 	public String toString() {
 	    return idioma + " - " + dificultad; 

@@ -26,16 +26,17 @@ public class VistaAdministrador extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(new GridLayout(3, 1, 5, 5));
         
-        btnAlumnos = new JButton("Alumnos");
+        btnAlumnos = new JButton("Alumnos"); // Boton alumnos
         contentPane.add(btnAlumnos);
         
-        btnProfesores = new JButton("Profesores");
+        btnProfesores = new JButton("Profesores"); // Boton profesores
         contentPane.add(btnProfesores);
         
-        btnCerrar = new JButton("Cerrar Sesión");
+        btnCerrar = new JButton("Cerrar Sesión"); // Boton cerrar sesion
         contentPane.add(btnCerrar);
     }
 
+    // Getters & Setters de los botones
 	public JButton getBtnAlumnos() {
 		return btnAlumnos;
 	}

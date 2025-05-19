@@ -28,6 +28,7 @@ public class VistaDetalles extends JFrame {
         setSize(new Dimension(350, 300));
         setLocationRelativeTo(null);
 
+        // Panel de detalles 
         JPanel panel = new JPanel(new GridLayout(5, 1, 5, 5));
         panel.setBorder(new EmptyBorder(10, 15, 10, 15));
         panel.add(new JLabel("Idioma: " + curso.getIdioma()));
@@ -49,6 +50,7 @@ public class VistaDetalles extends JFrame {
         add(panelBotones, BorderLayout.SOUTH);
     }
 
+    // Getters
     public JButton getBtnVolver() {
         return btnVolver;
     }

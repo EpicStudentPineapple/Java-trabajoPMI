@@ -76,6 +76,7 @@ public class ControllerDesbloqAlumno {
         cargarAlumnosBloqueados("");
     }
 
+    // Metodo para cargar los alumno bloqueados
     private void cargarAlumnosBloqueados(String filtro) {
         ArrayList<Alumno> bloqueados = RepositorioAdministrador.buscarAlumnosBloqueadosPorNombre(filtro);
         DefaultListModel<Alumno> modelo = vistaDesbloqAlumno.getModeloLista();
@@ -85,11 +86,13 @@ public class ControllerDesbloqAlumno {
         }
     }
 
+    // Metodo para buscar los alumnos bloqueados
     private void buscarAlumnosBloqueados() {
         String nombre = vistaDesbloqAlumno.getTextoBusqueda().getText().trim();
         cargarAlumnosBloqueados(nombre);
     }
 
+    // Metodo para recargar la lista
     public void recargarLista() {
         buscarAlumnosBloqueados();
     }

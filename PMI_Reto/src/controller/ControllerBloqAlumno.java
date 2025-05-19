@@ -23,7 +23,7 @@ public class ControllerBloqAlumno {
         this.vista = vista;
         this.vistaAdminAlumno = vistaAdminAlumno;
 
-        // Listener para el botón Buscar
+        // Boton para buscar
         this.vista.getBotonBuscar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -31,7 +31,7 @@ public class ControllerBloqAlumno {
             }
         });
 
-        // Listener para la selección en la lista
+        // Mostramos la lista de alumnos
         this.vista.getListaAlumnos().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -45,6 +45,8 @@ public class ControllerBloqAlumno {
                 }
             }
         });
+        
+        // Boton volver
         this.vista.getBotonVolver().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

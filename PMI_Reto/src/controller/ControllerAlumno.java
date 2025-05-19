@@ -1,7 +1,8 @@
 package controller;
 
 import javax.swing.JOptionPane;
-import repositorios.RepositorioUsuario;
+
+import repositorios.RepositorioPersona;
 import view.VistaAlumno;
 import view.VistaCambiarDatos;
 import view.VistaCursos;
@@ -43,7 +44,7 @@ public class ControllerAlumno {
 
         // Boton para dar de baja
         this.vista.getBtnBaja().addActionListener(e -> {
-            boolean eliminado = RepositorioUsuario.eliminarAlumnoPorDNI(dni);
+            boolean eliminado = RepositorioPersona.eliminarAlumnoPorDNI(dni);
             if (eliminado) {
                 vista.cerrar();
                 vistaLogin.iniciar();

@@ -29,12 +29,11 @@ public class ControllerCursos {
 			modeloLista.addElement(curso);
 		}
 
-		// Accion seleccionar curso
+		// Accion para seleccionar cursos
 		this.vista.getListaCursos().addListSelectionListener(e -> {
 			if (!e.getValueIsAdjusting()) {
 				Curso seleccionado = vista.getListaCursos().getSelectedValue();
 				if (seleccionado != null) {
-					// Obtener datos del curso
 					Curso cursoCompleto = RepositorioCursos.obtenerCursoPorId(seleccionado.getIdCurso());
 					VistaDetalles vistaDetalles = new VistaDetalles(cursoCompleto, dniAlumno);
 					ControllerDetalles controllerDetalles = new ControllerDetalles(vistaDetalles, dniAlumno);
@@ -43,6 +42,8 @@ public class ControllerCursos {
 				}
 			}
 		});
+		
+		// Boton buscar
 		this.vista.getBtnBuscar().addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {

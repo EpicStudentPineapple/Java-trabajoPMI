@@ -11,7 +11,7 @@ import modelo.SeguimientoAlumno;
 
 public class RepositorioSeguimientoAlumno {
 
-	// Metodo actualizacion del seguimiento del alumno
+	// Metodo para actualizar el seugimiento del alumno
 	public static boolean actualizarSeguimientoAlumno(String dni, int idCurso, int asistencia, int participacion, int rendimiento) {
 		String sql = "UPDATE SeguimientoAlumno SET asistencia = ?, participacion = ?, rendimiento = ? WHERE dni = ? AND idCurso = ?";
 		
@@ -38,7 +38,7 @@ public class RepositorioSeguimientoAlumno {
 		return false;
 	}
 	
-	// Metodo para insertar seguimiento de un alumno nuevo
+	// Metodo para insertar seguimiento de un alumno
 	public static boolean insertarSeguimientoAlumno(String dni, int idCurso, String nivelIdioma, int asistencia, int participacion, int rendimiento) {
 		String sql = "INSERT INTO SeguimientoAlumno (dni, idCurso, nivelIdioma, asistencia, participacion, rendimiento) VALUES (?, ?, ?, ?, ?, ?)";
 		
@@ -66,6 +66,7 @@ public class RepositorioSeguimientoAlumno {
 		return false;
 	}
 	
+	// Metodo para consultar los seguimientos de alumno
 	public static ArrayList<SeguimientoAlumno> consultarSeguimientoAlumno() {
 	    ArrayList<SeguimientoAlumno> lista = new ArrayList<>();
 
@@ -121,12 +122,10 @@ public class RepositorioSeguimientoAlumno {
 	public static String obtenerSeguimientosComoTexto() {
 	    StringBuilder sb = new StringBuilder();
 	    
-	    // Consulta a la base de datos para obtener los seguimientos
 	    try (Connection conexion = ConectorBD.getConexion();
 	         Statement stmt = conexion.createStatement();
 	         ResultSet rs = stmt.executeQuery("SELECT * FROM SeguimientoAlumno")) {
 
-	        // Recorrer los resultados y agregarlos al StringBuilder
 	        while (rs.next()) {
 	            String dni = rs.getString("dni");
 	            int idCurso = rs.getInt("idCurso");
@@ -135,7 +134,6 @@ public class RepositorioSeguimientoAlumno {
 	            int participacion = rs.getInt("participacion");
 	            int rendimiento = rs.getInt("rendimiento");
 	            
-	            // Agregar los datos al StringBuilder en formato legible
 	            sb.append("DNI: ").append(dni).append(", Curso ID: ").append(idCurso)
 	              .append(", Nivel: ").append(nivelIdioma)
 	              .append(", Asistencia: ").append(asistencia)
@@ -147,6 +145,6 @@ public class RepositorioSeguimientoAlumno {
 	        JOptionPane.showMessageDialog(null, "Error al obtener los seguimientos: " + e.getMessage());
 	    }
 	    
-	    return sb.toString(); // Devolver el texto con los datos de seguimiento
+	    return sb.toString();
 	}
 }

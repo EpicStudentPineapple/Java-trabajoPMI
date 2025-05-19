@@ -17,6 +17,7 @@ public class ControllerAdminAlumno {
         this.vista = vista;
         this.vistaAdministrador = vistaAdministrador;
 
+        // Boton para la vista bloquear alumnos
         this.vista.getBtnBloquear().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -27,6 +28,7 @@ public class ControllerAdminAlumno {
             }
         });
 
+        // Boton para la vista desbloquear alumnos
         this.vista.getBtnDesbloquear().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,6 +39,7 @@ public class ControllerAdminAlumno {
             }
         });
 
+        // Boton para volver a la vista anterior
         this.vista.getBtnVolver().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

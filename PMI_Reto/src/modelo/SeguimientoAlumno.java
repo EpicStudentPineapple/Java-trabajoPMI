@@ -2,7 +2,7 @@ package modelo;
 
 public class SeguimientoAlumno {
 
-	// Atributos
+	// Atributos propios
     private String dni;
     private int idCurso;
     private String nivelIdioma;

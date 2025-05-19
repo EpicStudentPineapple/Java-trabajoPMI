@@ -14,21 +14,23 @@ public class VistaActualizarSeguimientoAlumno extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(8, 2, 5, 5));
 
+        // Mostramos datos pero no son editables
         add(new JLabel("DNI:"));
         txtDni = new JTextField();
-        txtDni.setEditable(false); // No se puede editar
+        txtDni.setEditable(false);
         add(txtDni);
 
         add(new JLabel("ID Curso:"));
         txtIdCurso = new JTextField();
-        txtIdCurso.setEditable(false); // No editable
+        txtIdCurso.setEditable(false);
         add(txtIdCurso);
 
         add(new JLabel("Nivel Idioma:"));
         txtNivel = new JTextField();
-        txtNivel.setEditable(false); // No editable
+        txtNivel.setEditable(false);
         add(txtNivel);
 
+        // Estos datos si son editables
         add(new JLabel("Asistencia:"));
         txtAsistencia = new JTextField();
         add(txtAsistencia);
@@ -41,6 +43,7 @@ public class VistaActualizarSeguimientoAlumno extends JFrame {
         txtRendimiento = new JTextField();
         add(txtRendimiento);
 
+        // Botones para que se actualice o para volver a atras
         btnActualizar = new JButton("Actualizar");
         btnVolver = new JButton("Volver");
 

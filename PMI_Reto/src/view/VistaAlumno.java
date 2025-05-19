@@ -33,17 +33,17 @@ public class VistaAlumno extends JFrame {
         JPanel panelBotones = new JPanel();
         panelBotones.setLayout(new GridLayout(4, 1, 10, 10));
 
-        btnCursos = new JButton("Ver Cursos");
+        btnCursos = new JButton("Ver Cursos"); // Boton cursos
         panelBotones.add(btnCursos);
 
-        btnDatos = new JButton("Cambiar Datos");
+        btnDatos = new JButton("Cambiar Datos"); // Boton cambiar datos
         panelBotones.add(btnDatos);
      
         
-        btnCerrar = new JButton("Cerrar Sesión");
+        btnCerrar = new JButton("Cerrar Sesión"); // Boton cerrar sesion
         panelBotones.add(btnCerrar);
         
-        btnBaja = new JButton("Dar de baja");
+        btnBaja = new JButton("Dar de baja"); // Boton dar de baja
         panelBotones.add(btnBaja);
 
 

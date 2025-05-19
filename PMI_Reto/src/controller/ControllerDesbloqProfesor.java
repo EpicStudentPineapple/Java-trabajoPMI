@@ -75,6 +75,7 @@ public class ControllerDesbloqProfesor {
         cargarProfesoresBloqueados("");
     }
 
+    // Metodo para cargar la lista de profesores bloqueados
     private void cargarProfesoresBloqueados(String filtro) {
         ArrayList<Profesor> bloqueados = RepositorioAdministrador.buscarProfesoresBloqueadosPorNombre(filtro);
         DefaultListModel<Profesor> modelo = vistaDesbloqProfesor.getModeloLista();
@@ -84,11 +85,13 @@ public class ControllerDesbloqProfesor {
         }
     }
 
+    // Metodo para buscar profesores bloqueados
     private void buscarProfesoresBloqueados() {
         String nombre = vistaDesbloqProfesor.getTextoBusqueda().getText().trim();
         cargarProfesoresBloqueados(nombre);
     }
 
+    // Metodo para recargar la lista de los profesores
     public void recargarLista() {
         buscarProfesoresBloqueados();
     }

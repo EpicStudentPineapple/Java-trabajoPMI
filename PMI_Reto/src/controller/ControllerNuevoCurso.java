@@ -15,6 +15,7 @@ public class ControllerNuevoCurso {
         agregarListeners();
     }
 
+    // Metodo para añadir un nuevo curso
     private void agregarListeners() {
         vnc.getBtnAnadir().addActionListener(e -> {
             String idioma = vnc.getTxtIdioma().getText();
@@ -25,22 +26,19 @@ public class ControllerNuevoCurso {
 
             if (!idioma.isEmpty() && !dia.isEmpty() && !horario.isEmpty()
                 && !dificultad.isEmpty() && !programa.isEmpty()) {
-
                 RepositorioCursos.nuevoCurso(idioma, dia, horario, dificultad, programa);
                 vnc.limpiarCampos();
-
-                // Refrescar lista de cursos en la ventana principal
                 controladorPrincipal.refrescarCursos();
-
             } else {
                 JOptionPane.showMessageDialog(vnc, "Todos los campos son obligatorios.");
             }
         });
 
+        // Boton volver
         vnc.getBtnVolver().addActionListener(e -> vnc.dispose());
     }
 
     public void iniciar() {
-        // Si necesitas alguna inicialización, aquí va
+    	vnc.setVisible(true);
     }
 }

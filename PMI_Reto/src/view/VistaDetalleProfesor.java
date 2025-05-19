@@ -45,7 +45,7 @@ public class VistaDetalleProfesor extends JFrame {
         lblApellido.setText("Apellido: " + p.getApellido());
         lblIdioma.setText("Idioma: " + p.getIdioma());
         lblExperiencia.setText("Experiencia: " + p.getExperiencia());
-        lblBloqueado.setText("Bloqueado: " + (p.isBloqueado() ? "Sí" : "No"));
+        lblBloqueado.setText("Bloqueado: " + (p.getBloqueado() ? "Sí" : "No"));
     }
 
     public JButton getBtnBloquear() {

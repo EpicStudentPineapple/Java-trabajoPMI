@@ -20,6 +20,7 @@ public class VistaLogin extends JFrame {
     private JTextField dni;
     private JPasswordField password;
 
+    // Getters
     public JButton getBtnLogin() {
         return btnLogin;
     }

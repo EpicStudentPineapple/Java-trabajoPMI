@@ -51,6 +51,7 @@ public class VistaProfesor extends JFrame {
         this.dispose();
     }
 
+    // Getters
     public JButton getBtnSeguimientoAlumno() {
         return btnSeguimientoAlumno;
     }

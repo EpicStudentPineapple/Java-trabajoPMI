@@ -17,8 +17,9 @@ public class ControllerAdministrador {
 		this.vista = vista;
 		this.vistaLogin = vistaLogin;
 		this.nombre = nombre;
-		this.vista.getBtnAlumnos().addActionListener(new ActionListener() {
-			
+		
+		// Boton para la vista adminAlumno
+		this.vista.getBtnAlumnos().addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			VistaAdminAlumno vistaAdminAlumno = new VistaAdminAlumno();
@@ -27,6 +28,8 @@ public class ControllerAdministrador {
 			vistaAdminAlumno.iniciar();
 			}
 		});
+		
+		// Boton para la vistaAdminProfesor
 		this.vista.getBtnProfesores().addActionListener(new ActionListener() {
 			
 			@Override
@@ -37,6 +40,8 @@ public class ControllerAdministrador {
 			vistaAdminProfesor.iniciar();
 			}
 		});
+		
+		// Boton de cerrar sesion
 		this.vista.getBtnCerrar().addActionListener(new ActionListener() {
 			
 			@Override
@@ -48,7 +53,7 @@ public class ControllerAdministrador {
 		});
 	}
 	
-
+	// Ponemos visible la vista
 	public void iniciar() {
 		vista.setVisible(true);
 	}

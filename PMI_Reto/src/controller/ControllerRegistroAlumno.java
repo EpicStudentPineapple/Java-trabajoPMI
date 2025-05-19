@@ -22,12 +22,14 @@ public class ControllerRegistroAlumno {
         this.vistaRegistroPrincipal = vistaRegistroPrincipal;
         this.vistaLogin = vistaLogin;
 
+        // Boton registrar
         this.vistaAlumno.getBtnRegistrar().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 registrarAlumno();
             }
         });
 
+        // Boton volver
         this.vistaAlumno.getBtnVolver().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 vistaRegistroPrincipal.setVisible(true);
@@ -36,6 +38,7 @@ public class ControllerRegistroAlumno {
         });
     }
 
+    // Metodo para registrar alumno
     private void registrarAlumno() {
         String edad = vistaAlumno.getTxtEdad().getText();
         String correo = vistaAlumno.getTxtCorreo().getText();
@@ -76,7 +79,7 @@ public class ControllerRegistroAlumno {
             } else {
                 JOptionPane.showMessageDialog(vistaAlumno, "No se pudo registrar al alumno (registro duplicado u otro motivo)", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(vistaAlumno, "Error al registrar en la base de datos: " + ex.getMessage(), "Error de SQL", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }

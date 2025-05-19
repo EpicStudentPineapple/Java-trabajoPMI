@@ -18,6 +18,8 @@ public class ControllerLogin {
 
 	public ControllerLogin(VistaLogin vista) {
 		this.vista = vista;
+		
+		// Boton para logearse
 		this.vista.getBtnLogin().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -25,6 +27,8 @@ public class ControllerLogin {
 
 			}
 		});
+		
+		// Boton para registrarse
 		this.vista.getBtnRegistrar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -33,6 +37,7 @@ public class ControllerLogin {
         });
 	}
 
+	// Metodo para verificar el usuario
 	private void verificarUsuario() {
 	    String dni = vista.getTxtDni().getText();
 	    String contraseña = vista.getTxtContraseña().getText();
@@ -64,10 +69,11 @@ public class ControllerLogin {
 	    }
 	}
 
-
 	public void iniciar() {
 		vista.setVisible(true);
 	}
+	
+	// Metodo para ir a la vista registro
     private void mostrarRegistro() {
         VistaRegistro vistaRegistro = new VistaRegistro();
         new ControllerRegistro(vistaRegistro, vista);

@@ -52,13 +52,14 @@ public class VistaNuevoSeguimientoAlumno extends JFrame {
         botonAnadir = new JButton("Añadir");
         botonVolver = new JButton("Volver");
 
-        // Añadir acciones a los botones
+        // Accion boton añadir
         botonAnadir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 anadirSeguimiento();
             }
         });
 
+        // Accion boton volver
         botonVolver.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -77,6 +78,7 @@ public class VistaNuevoSeguimientoAlumno extends JFrame {
         setVisible(true);
     }
 
+    // Metodo de añadir seguimiento
     private void anadirSeguimiento() {
         String idAlumno = dni.getText().trim();
         String idCurso = this.idCurso.getText().trim();
@@ -111,6 +113,7 @@ public class VistaNuevoSeguimientoAlumno extends JFrame {
         }
     }
 
+    // Metodo para limpiar los campos
     public void limpiarCampos() {
         dni.setText("");
         idCurso.setText("");
@@ -120,6 +123,7 @@ public class VistaNuevoSeguimientoAlumno extends JFrame {
         nivelIdioma.setSelectedIndex(0);
     }
     
+    // Getters
     public JTextField getDni() {
         return dni;
     }

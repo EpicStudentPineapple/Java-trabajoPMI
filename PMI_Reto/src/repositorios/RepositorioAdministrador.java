@@ -7,6 +7,8 @@ import modelo.Profesor;
 
 public class RepositorioAdministrador {
 
+	
+	// Metodo para buscar los alumnos por nombre
     public static ArrayList<Alumno> buscarAlumnosPorNombre(String nombre) {
         ArrayList<Alumno> lista = new ArrayList<>();
         String sql = "SELECT p.dni, p.nombre, p.apellido, p.contraseña, p.rol, p.bloqueado, a.correo "
@@ -27,6 +29,7 @@ public class RepositorioAdministrador {
         return lista;
     }
 
+    // Metodo para bloquear a un alumno
     public static boolean bloquearAlumno(String dni) {
         String sql = "UPDATE Persona SET bloqueado = true WHERE dni = ?";
         try (PreparedStatement stmt = ConectorBD.getConexion().prepareStatement(sql)) {
@@ -39,6 +42,7 @@ public class RepositorioAdministrador {
         return false;
     }
 
+    // Metodo para buscar a un profesor por el nombre
     public static ArrayList<Profesor> buscarProfesoresPorNombre(String nombre) {
         ArrayList<Profesor> lista = new ArrayList<>();
         String sql = "SELECT p.dni, p.nombre, p.apellido, p.contraseña, p.rol, p.bloqueado, pr.nivelExperiencia, pr.especializacionIdioma "
@@ -60,6 +64,7 @@ public class RepositorioAdministrador {
         return lista;
     }
 
+    // Metodo para bloquear a un profesor
     public static boolean bloquearProfesor(String dni) {
         String sql = "UPDATE Persona SET bloqueado = true WHERE dni = ?";
         try (PreparedStatement stmt = ConectorBD.getConexion().prepareStatement(sql)) {
@@ -72,6 +77,7 @@ public class RepositorioAdministrador {
         return false;
     }
 
+    // Metodo para buscar a los alumnos bloqueados por el nombre
     public static ArrayList<Alumno> buscarAlumnosBloqueadosPorNombre(String nombre) {
         ArrayList<Alumno> lista = new ArrayList<>();
         String sql = "SELECT p.dni, p.nombre, p.apellido, p.contraseña, p.rol, p.bloqueado, a.correo "
@@ -93,6 +99,7 @@ public class RepositorioAdministrador {
         return lista;
     }
 
+    // Metodo para desbloquear a un alumno
     public static boolean desbloquearAlumno(String dni) {
         String sql = "UPDATE Persona SET bloqueado = false WHERE dni = ?";
         try (PreparedStatement stmt = ConectorBD.getConexion().prepareStatement(sql)) {
@@ -105,6 +112,7 @@ public class RepositorioAdministrador {
         return false;
     }
 
+    // Metodo para buscar a profesores bloqueados por nombre
     public static ArrayList<Profesor> buscarProfesoresBloqueadosPorNombre(String nombre) {
         ArrayList<Profesor> lista = new ArrayList<>();
         String sql = "SELECT p.dni, p.nombre, p.apellido, p.contraseña, p.rol, p.bloqueado, pr.nivelExperiencia, pr.especializacionIdioma "
@@ -126,6 +134,7 @@ public class RepositorioAdministrador {
         return lista;
     }
 
+    // Metodo para desbloquear a profesores
     public static boolean desbloquearProfesor(String dni) {
         String sql = "UPDATE Persona SET bloqueado = false WHERE dni = ?";
         try (PreparedStatement stmt = ConectorBD.getConexion().prepareStatement(sql)) {

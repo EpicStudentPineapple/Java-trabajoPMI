@@ -7,6 +7,7 @@ public class Profesor extends Persona {
 	private String experiencia;
 	 private boolean bloqueado;
 
+	 // Constructor
 	public Profesor(String dni, String contraseña, String nombre, String apellido, String rol, String idioma,
 			String experiencia) {
 		super(dni, contraseña, nombre, apellido, rol);
@@ -31,8 +32,7 @@ public class Profesor extends Persona {
 		this.experiencia = experiencia;
 	}
 
-	   // Getter y setter para bloqueado
-    public boolean isBloqueado() {
+    public boolean getBloqueado() {
         return bloqueado;
     }
 
@@ -40,6 +40,7 @@ public class Profesor extends Persona {
         this.bloqueado = bloqueado;
     }
 
+    // Metodos heredados
 	@Override
 	public void imparteClase() {
 		// TODO Auto-generated method stub
@@ -51,6 +52,8 @@ public class Profesor extends Persona {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	// toString
     @Override
     public String toString() {
         return nombre + " " + apellido + " - DNI: " + dni;

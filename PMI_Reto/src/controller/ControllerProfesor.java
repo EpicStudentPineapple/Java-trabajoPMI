@@ -19,6 +19,7 @@ public class ControllerProfesor {
         this.vl = vl;
         this.nombre = nombre;
         
+        // Boton cursos
         this.vp.getBtnCursos().addActionListener(e -> {
             vp.cerrar();
             VistaCursoProfesor vcp = new VistaCursoProfesor();
@@ -26,6 +27,7 @@ public class ControllerProfesor {
             ccp.iniciar();
         });
         
+        // Boton seguimiento alumno
         this.vp.getBtnSeguimientoAlumno().addActionListener(e -> {
             vp.cerrar();
             VistaSeguimientoAlumno vistaSeguimiento = new VistaSeguimientoAlumno();
@@ -33,6 +35,7 @@ public class ControllerProfesor {
             csa.iniciar();
         });
         
+        // Boton cerrar sesion
         this.vp.getBtnCerrarSesion().addActionListener(e ->{
         	vp.cerrar();
         	VistaLogin vistaLogin = new VistaLogin();

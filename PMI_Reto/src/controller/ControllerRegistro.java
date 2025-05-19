@@ -19,12 +19,14 @@ public class ControllerRegistro {
         this.vistaRegistro = vistaRegistro;
         this.vistaLogin = vistaLogin;
 
+        // Boton registrar
         this.vistaRegistro.getBtnRegistrar().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 continuarRegistro();
             }
         });
 
+        // Boton volver
         this.vistaRegistro.getBtnVolver().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 volverALogin();
@@ -32,6 +34,7 @@ public class ControllerRegistro {
         });
     }
 
+    // Metodo para el registro
     private void continuarRegistro() {
         String dni = vistaRegistro.getTxtDni().getText();
         String nombre = vistaRegistro.getTxtNombre().getText();
@@ -67,6 +70,7 @@ public class ControllerRegistro {
         }
     }
 
+    // Metodo para volver a la vista login
     private void volverALogin() {
         vistaLogin.setVisible(true);
         vistaRegistro.dispose();

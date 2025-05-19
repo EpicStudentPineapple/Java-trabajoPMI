@@ -15,13 +15,13 @@ import view.VistaProfesor;
 public class ControllerCursoProfesor {
     private VistaCursoProfesor vcp;
     private VistaProfesor vp;
-    private ArrayList<Curso> todosLosCursos;  // Lista completa para filtrar
+    private ArrayList<Curso> todosLosCursos;
 
     public ControllerCursoProfesor(VistaCursoProfesor vcp, VistaProfesor vp) {
         this.vcp = vcp;
         this.vp = vp;
 
-        // Botón Añadir nuevo curso: abrir la ventana y crear su controlador
+        // Botón añadir nuevo curso
         vcp.getBtnAnadirCurso().addActionListener(e -> {
             VistaNuevoCurso vnc = new VistaNuevoCurso();
             ControllerNuevoCurso cnc = new ControllerNuevoCurso(vnc, this);
@@ -52,24 +52,25 @@ public class ControllerCursoProfesor {
             vp.setVisible(true);
         });
 
-        // Añadimos listener para el buscador en tiempo real
+        // Boton buscar
         vcp.getBtnBuscar().addActionListener(e ->{
         	filtrarCursos();
         });
     }
 
     public void iniciar() {
-        todosLosCursos = RepositorioCursos.obtenerCursos();  // Guardamos la lista completa
-        vcp.setCursos(todosLosCursos);  // Mostramos lista completa
+        todosLosCursos = RepositorioCursos.obtenerCursos();
+        vcp.setCursos(todosLosCursos);
         vcp.iniciar();
     }
 
-    // Método para refrescar lista de cursos
+    // Metodo para refrescar la lista de cursos
     public void refrescarCursos() {
         todosLosCursos = RepositorioCursos.obtenerCursos();
         vcp.setCursos(todosLosCursos);
     }
     
+    // Metodo para filtrar los cursos
     public void filtrarCursos() {
     	String texto = vcp.getTextBuscador().getText().toLowerCase().trim();
     	if (texto.isEmpty()) {

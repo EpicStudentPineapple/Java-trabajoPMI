@@ -2,7 +2,7 @@ package controller;
 
 import javax.swing.JOptionPane;
 
-import repositorios.RepositorioUsuario;
+import repositorios.RepositorioPersona;
 import view.VistaContraseña;
 import view.VistaLogin;
 
@@ -27,23 +27,23 @@ public class ControllerContraseña {
             String nuevaContraseña = String.valueOf(vista.getTxtNuevaContraseña().getPassword());
             String confirmarContraseña = String.valueOf(vista.getTxtConfirmarContraseña().getPassword());
 
-            // Validacion campos vacios
+            // Validacion de los campos vacios
             if (dni.isEmpty() || nuevaContraseña.isEmpty() || confirmarContraseña.isEmpty()) {
                 JOptionPane.showMessageDialog(vista, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            // Validacion contraseñas iguales
+            // Validacion de las contraseñas iguales
             if (!nuevaContraseña.equals(confirmarContraseña)) {
                 JOptionPane.showMessageDialog(vista, "Las contraseñas no coinciden.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
             // Verificar que el usuario exista en la base de datos
-            boolean usuarioExiste = RepositorioUsuario.existeUsuario(dni);
+            boolean usuarioExiste = RepositorioPersona.existeUsuario(dni);
 
             if (usuarioExiste) {
-                boolean actualizado = RepositorioUsuario.actualizarContraseña(dni, nuevaContraseña);
+                boolean actualizado = RepositorioPersona.actualizarContraseña(dni, nuevaContraseña);
                 if (actualizado) {
                     JOptionPane.showMessageDialog(vista, "Contraseña actualizada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     vista.cerrar();

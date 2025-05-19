@@ -52,6 +52,7 @@ public class VistaCursos extends JFrame {
         contentPane.add(panelBotones, BorderLayout.SOUTH);
     }
 
+    // Getters 
     public JButton getBtnBuscar() {
         return botonBuscar;
     }

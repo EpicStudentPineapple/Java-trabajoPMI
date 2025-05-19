@@ -17,13 +17,13 @@ public class ControllerNuevoSeguimientoAlumno {
         this.vistaNuevo = vistaNuevo;
         this.vistaAnterior = vistaAnterior;
 
-        // Acción del botón Volver
+        // Boton volver
         this.vistaNuevo.getBtnVolver().addActionListener(e -> {
             vistaNuevo.dispose();
             vistaAnterior.setVisible(true);
         });
 
-        // Acción del botón Añadir
+        // Boton añadir
         this.vistaNuevo.getBtnAnadir().addActionListener(e -> {
             JTextField dni = vistaNuevo.getDni();
             JComboBox<String> nivelIdioma = vistaNuevo.getNivelIdioma();

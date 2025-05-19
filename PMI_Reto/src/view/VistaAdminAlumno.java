@@ -27,25 +27,26 @@ public class VistaAdminAlumno extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(3, 2, 5, 5));
 
-		btnBloquear = new JButton("Bloquear");
+		btnBloquear = new JButton("Bloquear"); // Boton bloquear
 		contentPane.add(btnBloquear);
 
-		btnDesbloquear = new JButton("Desbloquear");
+		btnDesbloquear = new JButton("Desbloquear"); // Boton desbloquear
 		contentPane.add(btnDesbloquear);
 
-		btnAñadir = new JButton("Añadir");
+		btnAñadir = new JButton("Añadir"); // Boton añadir
 		contentPane.add(btnAñadir);
 
-		btnEditar = new JButton("Editar");
+		btnEditar = new JButton("Editar"); // Boton editar
 		contentPane.add(btnEditar);
 
-		btnEliminar = new JButton("Eliminar");
+		btnEliminar = new JButton("Eliminar"); // Boton editar
 		contentPane.add(btnEliminar);
 
-		btnVolver = new JButton("Volver");
+		btnVolver = new JButton("Volver"); // Boton volver
 		contentPane.add(btnVolver);
 	}
 
+	// Getters & Setters de los botones
 	public JButton getBtnBloquear() {
 		return btnBloquear;
 	}

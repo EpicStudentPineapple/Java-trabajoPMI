@@ -19,7 +19,7 @@ public class VistaCambiarDatos extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
-      
+        // Panel para mostrar los datos
         JPanel panel = new JPanel(new GridLayout(5, 2, 10, 10));
         panel.setBorder(new EmptyBorder(15, 20, 15, 20)); 
 
@@ -31,7 +31,7 @@ public class VistaCambiarDatos extends JFrame {
         botonGuardar = new JButton("Guardar cambios");
         botonCancelar = new JButton("Cancelar");
 
-        
+        // Nuevos datos
         panel.add(new JLabel("Nuevo nombre:"));
         panel.add(Nombre);
         panel.add(new JLabel("Nuevo apellido:"));
@@ -47,6 +47,7 @@ public class VistaCambiarDatos extends JFrame {
         add(panel);
     }
 
+    // Getters de los botones y los JTextFile
     public JButton getBtnGuardar() {
         return botonGuardar;
     }

@@ -32,7 +32,7 @@ public class ControllerSeguimientoAlumno {
             VistaNuevoSeguimientoAlumno vistaNuevo = new VistaNuevoSeguimientoAlumno();
             ControllerNuevoSeguimientoAlumno controllerNuevo = new ControllerNuevoSeguimientoAlumno(vistaNuevo, vista);
             controllerNuevo.iniciar();
-            vista.setVisible(false); // Oculta esta ventana mientras se abre la de añadir
+            vista.setVisible(false);
         });
 
         // Botón Actualizar seguimiento
@@ -77,10 +77,11 @@ public class ControllerSeguimientoAlumno {
             }
         });
 
-        // Busqueda en tiempo real
+        // Boton buscar
         vista.getBtnBuscar().addActionListener(e -> filtrarSeguimientos());
     }
 
+    // Metodo para filtrar seguimientos
     private void filtrarSeguimientos() {
         String textoBusqueda = vista.getTextBuscador().getText().toLowerCase();
         vista.getModeloLista().clear();

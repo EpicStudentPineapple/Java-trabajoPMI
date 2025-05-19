@@ -24,6 +24,7 @@ public class VistaContraseña extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // Panel para pedir el dni y la nueva contraseña
         JPanel contentPane = new JPanel(new GridLayout(4, 2, 10, 10));
         contentPane.setBorder(new EmptyBorder(20, 20, 20, 20)); 
         setContentPane(contentPane);
@@ -55,6 +56,7 @@ public class VistaContraseña extends JFrame {
         this.dispose();
     }
 
+    // Getters de los textfile y botones
     public JTextField getTxtDni() {
         return txtDni;
     }

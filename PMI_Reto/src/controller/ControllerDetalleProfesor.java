@@ -21,9 +21,10 @@ public class ControllerDetalleProfesor {
 
         vista.mostrarDatosProfesor(profesor);
 
+        // Boton bloquear
         vista.getBtnBloquear().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (profesor.isBloqueado()) {
+                if (profesor.getBloqueado()) {
                     JOptionPane.showMessageDialog(vista, "Este profesor ya está bloqueado.");
                     return;
                 }

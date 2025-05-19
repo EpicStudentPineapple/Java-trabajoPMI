@@ -74,7 +74,7 @@ public class VistaCursoProfesor extends JFrame {
 
     private String formatearCurso(Curso curso) {
         return "Curso: " + curso.getIdCurso() + 
-               " | Nivel: " + curso.getIdioma() +
+               " | Idioma: " + curso.getIdioma() +
                " | Dia: " + curso.getDia() +
                " | Horario: " + curso.getHorario() + 
                " | Dificultad: " + curso.getDificultad() + 

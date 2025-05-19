@@ -78,19 +78,7 @@ public class ControllerSeguimientoAlumno {
         });
 
         // Busqueda en tiempo real
-        vista.getTextBuscador().getDocument().addDocumentListener(new DocumentListener() {
-            public void insertUpdate(DocumentEvent e) {
-                filtrarSeguimientos();
-            }
-
-            public void removeUpdate(DocumentEvent e) {
-                filtrarSeguimientos();
-            }
-
-            public void changedUpdate(DocumentEvent e) {
-                filtrarSeguimientos();
-            }
-        });
+        vista.getBtnBuscar().addActionListener(e -> filtrarSeguimientos());
     }
 
     private void filtrarSeguimientos() {

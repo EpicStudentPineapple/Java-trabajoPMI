@@ -53,35 +53,8 @@ public class ControllerCursoProfesor {
         });
 
         // Añadimos listener para el buscador en tiempo real
-        vcp.getTextBuscador().getDocument().addDocumentListener(new DocumentListener() {
-            public void insertUpdate(DocumentEvent e) {
-                filtrarCursos();
-            }
-            public void removeUpdate(DocumentEvent e) {
-                filtrarCursos();
-            }
-            public void changedUpdate(DocumentEvent e) {
-                filtrarCursos();
-            }
-
-            private void filtrarCursos() {
-                String texto = vcp.getTextBuscador().getText().toLowerCase().trim();
-                if (texto.isEmpty()) {
-                    vcp.setCursos(todosLosCursos);
-                    return;
-                }
-                ArrayList<Curso> filtrados = new ArrayList<>();
-                for (Curso c : todosLosCursos) {
-                    if (c.getIdioma().toLowerCase().contains(texto)
-                     || c.getDia().toLowerCase().contains(texto)
-                     || c.getHorario().toLowerCase().contains(texto)
-                     || c.getDificultad().toLowerCase().contains(texto)
-                     || c.getPrograma().toLowerCase().contains(texto)) {
-                        filtrados.add(c);
-                    }
-                }
-                vcp.setCursos(filtrados);
-            }
+        vcp.getBtnBuscar().addActionListener(e ->{
+        	filtrarCursos();
         });
     }
 
@@ -95,5 +68,26 @@ public class ControllerCursoProfesor {
     public void refrescarCursos() {
         todosLosCursos = RepositorioCursos.obtenerCursos();
         vcp.setCursos(todosLosCursos);
+    }
+    
+    public void filtrarCursos() {
+    	String texto = vcp.getTextBuscador().getText().toLowerCase().trim();
+    	if (texto.isEmpty()) {
+    		vcp.setCursos(todosLosCursos);
+    		return;
+    	}
+    	
+    	ArrayList<Curso> filtrados = new ArrayList<>();
+        for (Curso c : todosLosCursos) {
+            if (c.getIdioma().toLowerCase().contains(texto)
+             || c.getDia().toLowerCase().contains(texto)
+             || c.getHorario().toLowerCase().contains(texto)
+             || c.getDificultad().toLowerCase().contains(texto)
+             || c.getPrograma().toLowerCase().contains(texto)) {
+                filtrados.add(c);
+            }
+        }
+
+        vcp.setCursos(filtrados);
     }
 }

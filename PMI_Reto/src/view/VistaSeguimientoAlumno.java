@@ -20,6 +20,7 @@ public class VistaSeguimientoAlumno extends JFrame {
     private DefaultListModel<String> modeloLista;
     public ArrayList<SeguimientoAlumno> seguimientos;
     public JTextField txtBuscador;
+    public JButton btnBuscar;
     
     public VistaSeguimientoAlumno() {
         setTitle("Seguimiento de Alumnos");
@@ -37,8 +38,10 @@ public class VistaSeguimientoAlumno extends JFrame {
         JPanel panelBusqueda = new JPanel(new BorderLayout(5,5));
         JLabel buscar = new JLabel("Buscador");
         txtBuscador = new JTextField(20);
+        btnBuscar = new JButton("Buscar");
         panelBusqueda.add(buscar, BorderLayout.WEST);
         panelBusqueda.add(txtBuscador, BorderLayout.CENTER);
+        panelBusqueda.add(btnBuscar, BorderLayout.EAST);
         contentPane.add(panelBusqueda, BorderLayout.NORTH);
         
         // Inicializar el modelo de lista
@@ -103,6 +106,9 @@ public class VistaSeguimientoAlumno extends JFrame {
     }
     public JButton getBtnEliminar() { 
         return btnEliminar; 
+    }
+    public JButton getBtnBuscar() {
+    	return btnBuscar;
     }
     public JList<String> getListaSeguimientos() { 
         return listaSeguimientos; 

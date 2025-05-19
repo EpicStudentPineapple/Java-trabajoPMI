@@ -16,6 +16,7 @@ public class VistaCursoProfesor extends JFrame {
     public JButton btnEliminarCurso;
     public ArrayList<Curso> cursos;
     public JTextField txtBuscador;
+    public JButton btnBuscar;
     
     public VistaCursoProfesor() {
         setTitle("Cursos disponibles");
@@ -32,8 +33,10 @@ public class VistaCursoProfesor extends JFrame {
         JPanel panelBusqueda = new JPanel(new BorderLayout(5,5));
         JLabel buscar = new JLabel("Buscar:");
         txtBuscador = new JTextField(20);
+        btnBuscar = new JButton("Buscar");
         panelBusqueda.add(buscar, BorderLayout.WEST);
         panelBusqueda.add(txtBuscador, BorderLayout.CENTER);
+        panelBusqueda.add(btnBuscar, BorderLayout.EAST);
         contentPane.add(panelBusqueda, BorderLayout.NORTH);
         
         // Lista de cursos
@@ -104,5 +107,9 @@ public class VistaCursoProfesor extends JFrame {
     
     public JTextField getTextBuscador() {
     	return txtBuscador;
+    }
+    
+    public JButton getBtnBuscar() {
+    	return btnBuscar;
     }
 }

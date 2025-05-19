@@ -3,26 +3,20 @@ package modelo;
 public class Profesor extends Persona {
 
 	// Atributos propios
-	private String idioma;
+	
 	private String experiencia;
-	 private boolean bloqueado;
+	private String especializacionIdioma;
+	private boolean bloqueado;
 
 	 // Constructor
-	public Profesor(String dni, String contraseña, String nombre, String apellido, String rol, String idioma,
-			String experiencia) {
+	public Profesor(String dni, String contraseña, String nombre, String apellido, String rol, String especializacionIdioma, String experiencia) {
 		super(dni, contraseña, nombre, apellido, rol);
-		this.idioma = idioma;
+		this.especializacionIdioma = especializacionIdioma;
 		this.experiencia = experiencia;
 	}
 
 	// Getters & Setters
-	public String getIdioma() {
-		return idioma;
-	}
 
-	public void setIdioma(String idioma) {
-		this.idioma = idioma;
-	}
 
 	public String getExperiencia() {
 		return experiencia;
@@ -35,27 +29,26 @@ public class Profesor extends Persona {
     public boolean getBloqueado() {
         return bloqueado;
     }
+	// Getter y setter para bloqueado
+	public boolean isBloqueado() {
+		return bloqueado;
+	}
 
-    public void setBloqueado(boolean bloqueado) {
-        this.bloqueado = bloqueado;
-    }
+	public void setBloqueado(boolean bloqueado) {
+		this.bloqueado = bloqueado;
+	}
 
-    // Metodos heredados
-	@Override
-	public void imparteClase() {
-		// TODO Auto-generated method stub
-		
+	public String getEspecializacionIdioma() {
+		return especializacionIdioma;
+	}
+
+	public void setEspecializacionIdioma(String especializacionIdioma) {
+		this.especializacionIdioma = especializacionIdioma;
 	}
 
 	@Override
-	public void estaInscrito() {
-		// TODO Auto-generated method stub
-		
+	public String toString() {
+		return nombre + " " + apellido + " - DNI: " + dni;
 	}
-	
-	// toString
-    @Override
-    public String toString() {
-        return nombre + " " + apellido + " - DNI: " + dni;
-    }
 }
+

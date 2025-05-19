@@ -5,40 +5,44 @@ import java.awt.event.ActionListener;
 
 import view.VistaAdminProfesor;
 import view.VistaAdministrador;
+import view.VistaAñadirProfesor;
 import view.VistaBloqProfesor;
 import view.VistaDesbloqProfesor;
+import view.VistaEliminarProfesor;
+import view.VistaEditarProfesor;
 
 public class ControllerAdminProfesor {
 
-    private VistaAdminProfesor vista;
-    private VistaAdministrador vistaAdministrador;
+	private VistaAdminProfesor vista;
+	private VistaAdministrador vistaAdministrador;
 
-    public ControllerAdminProfesor(VistaAdminProfesor vista, VistaAdministrador vistaAdministrador) {
-        this.vista = vista;
-        this.vistaAdministrador = vistaAdministrador;
+	public ControllerAdminProfesor(VistaAdminProfesor vista, VistaAdministrador vistaAdministrador) {
+		this.vista = vista;
+		this.vistaAdministrador = vistaAdministrador;
 
         // Boton para la vistaBloqProfesor
-        this.vista.getBtnBloquear().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                VistaBloqProfesor vistaBloqProfesor = new VistaBloqProfesor();
-                ControllerBloqProfesor controllerBloqProfesor = new ControllerBloqProfesor(vistaBloqProfesor, vista);
-                vista.cerrar();
-                controllerBloqProfesor.iniciar();    
-            }
-        });
-
-        // Boton para la vista DesbloqProfesor
-        this.vista.getBtnDesbloquear().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                VistaDesbloqProfesor vistaDesbloqProfesor = new VistaDesbloqProfesor();
-                ControllerDesbloqProfesor controllerDesbloqProfesor = new ControllerDesbloqProfesor(vistaDesbloqProfesor, vista);
-                vista.cerrar();
-                controllerDesbloqProfesor.iniciar();
-            }
-        });
-
+		this.vista.getBtnBloquear().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VistaBloqProfesor vistaBloqProfesor = new VistaBloqProfesor();
+				ControllerBloqProfesor controllerBloqProfesor = new ControllerBloqProfesor(vistaBloqProfesor, vista);
+				vista.cerrar();
+				controllerBloqProfesor.iniciar();
+			}
+		});
+		
+        // Boton para la vista DesbloqProfesor    
+		this.vista.getBtnDesbloquear().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VistaDesbloqProfesor vistaDesbloqProfesor = new VistaDesbloqProfesor();
+				ControllerDesbloqProfesor controllerDesbloqProfesor = new ControllerDesbloqProfesor(
+						vistaDesbloqProfesor, vista);
+				vista.cerrar();
+				controllerDesbloqProfesor.iniciar();
+			}
+		});
+		
         // Boton para cerrar la vista
         this.vista.getBtnVolver().addActionListener(new ActionListener() {
             @Override
@@ -47,5 +51,50 @@ public class ControllerAdminProfesor {
                 vistaAdministrador.iniciar();
             }
         });
-    }
+        
+        // Metodo para añadir un nuevo profesor
+		this.vista.getBtnAñadir().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VistaAñadirProfesor vistaAñadirProfesor = new VistaAñadirProfesor();
+				ControllerAñadirProfesor controllerAñadirProfesor = new ControllerAñadirProfesor(vistaAñadirProfesor,
+						vista);
+				vista.cerrar();
+				vistaAñadirProfesor.iniciar();
+			}
+		});
+
+		// Metodo para eliminar profesor
+		this.vista.getBtnEliminar().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VistaEliminarProfesor vistaEliminarProfesor = new VistaEliminarProfesor();
+				ControllerEliminarProfesor controllerEliminarProfesor = new ControllerEliminarProfesor(
+						vistaEliminarProfesor, vista);
+				vista.cerrar();
+				controllerEliminarProfesor.iniciar();
+			}
+		});
+
+		// Metodo para editar datos del profesor
+		this.vista.getBtnEditar().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VistaEditarProfesor vistaEditarProfesor = new VistaEditarProfesor();
+				ControllerEditarProfesor controllerEditarProfesor = new ControllerEditarProfesor(vistaEditarProfesor,
+						vista);
+				vista.cerrar();
+				controllerEditarProfesor.iniciar();
+			}
+		});
+		
+		// Metodo para volver a la vista administrador
+		this.vista.getBtnVolver().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				vista.cerrar();
+				vistaAdministrador.iniciar();
+			}
+		});
+	}
 }

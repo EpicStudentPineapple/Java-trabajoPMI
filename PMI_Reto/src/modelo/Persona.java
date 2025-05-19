@@ -8,7 +8,7 @@ public abstract class Persona {
 	protected String nombre;
 	protected String apellido;
 	protected String rol;
-	
+
 	// Constructor
 	public Persona(String dni, String contraseña, String nombre, String apellido, String rol) {
 		super();
@@ -19,7 +19,7 @@ public abstract class Persona {
 		this.rol = rol;
 	}
 	
-	// Getters & Setters	
+	// Getters & Setters
 	public String getDni() {
 		return dni;
 	}
@@ -59,7 +59,7 @@ public abstract class Persona {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
-
+	
 	// toString
 	@Override
 	public String toString() {
@@ -67,8 +67,4 @@ public abstract class Persona {
 				+ ", rol=" + rol + "]";
 	}
 
-	// Metodos abstractos
-	public abstract void imparteClase();
-	
-	public abstract void estaInscrito();
 }

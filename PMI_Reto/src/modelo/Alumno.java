@@ -2,55 +2,51 @@ package modelo;
 
 public class Alumno extends Persona {
 
-    // Atributos propios
-    private int nivelIdioma;
-    private String correo;
-    private boolean bloqueado;  
+	// Atributos propios
+	private int nivelIdioma;
+	private String correo;
+	private boolean bloqueado;
+	private int edad;
 
- 
     // Constructor
-    public Alumno(String dni, String contraseña, String nombre, String apellido, String rol, int nivelIdioma, String correo) {
-        super(dni, contraseña, nombre, apellido, rol);
-        this.nivelIdioma = nivelIdioma;
-        this.correo = correo;
-    }
-
+	public Alumno(String dni, String contraseña, String nombre, String apellido, String rol, int nivelIdioma, String correo) {
+		super(dni, contraseña, nombre, apellido, rol);
+		this.nivelIdioma = nivelIdioma;
+		this.correo = correo;
+	}
+	
     // Getters & setters
     public boolean getBloqueado() {
         return bloqueado;
     }
-
+    	
     public void setBloqueado(boolean bloqueado) {
         this.bloqueado = bloqueado;
     }
     
-    public int getNivelIdioma() {
-        return nivelIdioma;
-    }
+   public int getNivelIdioma() {
+		return nivelIdioma;
+	}
 
-    public void setNivelIdioma(int nivelIdioma) {
-        this.nivelIdioma = nivelIdioma;
-    }
+	public void setNivelIdioma(int nivelIdioma) {
+		this.nivelIdioma = nivelIdioma;
+	}
 
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
+	public String getCorreo() {
+		return correo;
+	}
+	
+	public void setCorreo(String correo) {
         this.correo = correo;
     }
-    
 
-    // Métodos abstractos
-    @Override
-    public void imparteClase() {
-        // TODO Auto-generated method stub
-    }
-
-    @Override
-    public void estaInscrito() {
-        // TODO Auto-generated method stub
-    }
+	public int getEdad() {
+		return edad;
+	}
+   
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
 
     // toString
     @Override
